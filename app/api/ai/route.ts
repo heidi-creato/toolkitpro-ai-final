@@ -23,8 +23,8 @@ export async function POST(request: NextRequest) {
           { role: 'user', content: prompt }
         ],
         model: 'openai',
-        seed: -1,
         json: false
+        // لقد قمنا بإزالة السطر "seed: -1" الذي كان يسبب المشكلة
       })
     });
     
