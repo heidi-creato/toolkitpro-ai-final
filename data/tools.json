@@ -46,21 +46,6 @@
       "example": "مرحباً بك في موقع الأدوات الذكية هذا النص يحتوي على عدة كلمات جميلة"
     },
     {
-      "id": "hashtag-generator",
-      "name": "Hashtag Generator",
-      "nameAr": "مولد الهاشتاجات",
-      "nameDe": "Hashtag-Generator",
-      "nameFr": "Générateur de hashtags",
-      "nameEs": "Generador de hashtags",
-      "description": "توليد هاشتاجات مناسبة لوسائل التواصل الاجتماعي",
-      "descriptionEn": "Generate trending hashtags for social media",
-      "descriptionDe": "Trend-Hashtags für soziale Medien",
-      "descriptionFr": "Générer des hashtags tendance",
-      "descriptionEs": "Generar hashtags populares",
-      "icon": "#️⃣",
-      "example": "تطوير مواقع برمجة تقنية ذكاء اصطناعي"
-    },
-    {
       "id": "remove-duplicate-lines",
       "name": "Remove Duplicate Lines",
       "nameAr": "إزالة الأسطر المكررة",
@@ -314,36 +299,36 @@
       "descriptionEs": "Convertir a negrita",
       "icon": "⬛",
       "example": "هذا نص غامق وقوي"
+    },
+    {
+      "id": "hashtag-generator",
+      "name": "Hashtag Generator",
+      "nameAr": "مولد الهاشتاجات",
+      "nameDe": "Hashtag-Generator",
+      "nameFr": "Générateur de hashtags",
+      "nameEs": "Generador de hashtags",
+      "description": "توليد هاشتاجات مناسبة لوسائل التواصل الاجتماعي",
+      "descriptionEn": "Generate trending hashtags for social media",
+      "descriptionDe": "Generieren Sie trendige Hashtags",
+      "descriptionFr": "Générez des hashtags tendance",
+      "descriptionEs": "Genere hashtags populares",
+      "icon": "#️⃣",
+      "example": "تطوير مواقع برمجة تقنية ذكاء اصطناعي"
+    },
+    {
+      "id": "youtube-title-generator",
+      "name": "YouTube Title Generator",
+      "nameAr": "مولد عناوين يوتيوب",
+      "nameDe": "YouTube-Titel-Generator",
+      "nameFr": "Générateur de titres YouTube",
+      "nameEs": "Generador de títulos de YouTube",
+      "description": "توليد عناوين جذابة ومحسنة SEO لفيديوهات يوتيوب",
+      "descriptionEn": "Generate catchy SEO-optimized YouTube video titles",
+      "descriptionDe": "Generieren Sie eingängige YouTube-Titel",
+      "descriptionFr": "Générez des titres YouTube accrocheurs",
+      "descriptionEs": "Genere títulos atractivos para YouTube",
+      "icon": "🎬",
+      "example": "كيفية تعلم البرمجة للمبتدئين"
     }
   ]
-},
-{
-  "id": "hashtag-generator",
-  "name": "Hashtag Generator",
-  "nameAr": "مولد الهاشتاجات",
-  "nameDe": "Hashtag-Generator",
-  "nameFr": "Générateur de hashtags",
-  "nameEs": "Generador de hashtags",
-  "description": "توليد هاشتاجات مناسبة لوسائل التواصل الاجتماعي",
-  "descriptionEn": "Generate trending hashtags for social media",
-  "descriptionDe": "Generieren Sie trendige Hashtags",
-  "descriptionFr": "Générez des hashtags tendance",
-  "descriptionEs": "Genere hashtags populares",
-  "icon": "#️⃣",
-  "example": "تطوير مواقع برمجة تقنية ذكاء اصطناعي"
-},
-{
-  "id": "youtube-title-generator",
-  "name": "YouTube Title Generator",
-  "nameAr": "مولد عناوين يوتيوب",
-  "nameDe": "YouTube-Titel-Generator",
-  "nameFr": "Générateur de titres YouTube",
-  "nameEs": "Generador de títulos de YouTube",
-  "description": "توليد عناوين جذابة ومحسنة SEO لفيديوهات يوتيوب",
-  "descriptionEn": "Generate catchy SEO-optimized YouTube video titles",
-  "descriptionDe": "Generieren Sie eingängige YouTube-Titel",
-  "descriptionFr": "Générez des titres YouTube accrocheurs",
-  "descriptionEs": "Genere títulos atractivos para YouTube",
-  "icon": "🎬",
-  "example": "كيفية تعلم البرمجة للمبتدئين"
 }
