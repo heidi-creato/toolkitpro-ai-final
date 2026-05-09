@@ -52,9 +52,11 @@ export default function HomePage({
   const t = translations[locale as keyof typeof translations] || translations.en;
   
   const tools = toolsData.tools || [];
-  const primaryTools = tools.slice(0, 9);
-  const secondaryTools = tools.slice(9, 15);
-  const decorativeTools = tools.slice(15, 21);
+  
+  // تقسيم الأدوات: أول 11 أساسية (بما فيها الأدوات الجديدة)، الـ 6 التالية متوسطة، والباقي زخرفية
+  const primaryTools = tools.slice(0, 11);
+  const secondaryTools = tools.slice(11, 17);
+  const decorativeTools = tools.slice(17, 23);
 
   const getToolName = (tool: any) => {
     switch(locale) {
@@ -96,6 +98,7 @@ export default function HomePage({
         <div className="ads-placeholder">{t.ads}</div>
       </div>
 
+      {/* أدوات أساسية */}
       <div className="category-section">
         <div style={{ textAlign: 'center' }}>
           <h2 className="category-title" style={{ display: 'inline-block' }}>{t.primaryTitle}</h2>
@@ -111,6 +114,7 @@ export default function HomePage({
         </div>
       </div>
 
+      {/* أدوات متوسطة */}
       <div className="category-section">
         <div style={{ textAlign: 'center' }}>
           <h2 className="category-title" style={{ display: 'inline-block' }}>{t.secondaryTitle}</h2>
@@ -126,6 +130,7 @@ export default function HomePage({
         </div>
       </div>
 
+      {/* أدوات زخرفية */}
       <div className="category-section">
         <div style={{ textAlign: 'center' }}>
           <h2 className="category-title" style={{ display: 'inline-block' }}>{t.decorativeTitle}</h2>
