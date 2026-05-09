@@ -1,0 +1,522 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #0f2027;
+    --bg-secondary: #203a43;
+    --bg-card: rgba(18, 30, 36, 0.95);
+    --text-primary: #f0f3f8;
+    --text-secondary: #aaccee;
+    --accent: #ff9f4a;
+    --accent-hover: #ffb86b;
+    --border: rgba(255,255,255,0.1);
+    --input-bg: #fef9ef;
+    --input-text: #1a2c3e;
+    --success: #2c5e3a;
+    --error: #8b3c2c;
+}
+
+[data-theme="light"] {
+    --bg-primary: #f0f4f8;
+    --bg-secondary: #e2e8f0;
+    --bg-card: rgba(255,255,255,0.95);
+    --text-primary: #1a2c3e;
+    --text-secondary: #4a627a;
+    --border: rgba(0,0,0,0.1);
+    --input-bg: #ffffff;
+    --input-text: #1a2c3e;
+}
+
+body {
+    font-family: 'Cairo', 'Inter', system-ui, sans-serif;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    min-height: 100vh;
+    color: var(--text-primary);
+    transition: background 0.3s ease;
+}
+
+/* إزالة الإطارات من الصور */
+img, .logo-image, .logo-desktop img, .logo-mobile img {
+    border-radius: 0;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+/* تحسين حجم الخطوط */
+html {
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+/* تحسين البطاقات */
+.tool-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(8px);
+    border-radius: 1rem;
+    padding: 1.2rem;
+    border: 1px solid var(--border);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+.tool-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--accent) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border-color: var(--accent);
+}
+
+.tool-card:hover::before {
+    opacity: 0.1;
+}
+
+/* تأثيرات حركية */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.4s ease-out;
+}
+
+/* مؤشر تحميل */
+.loading-spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* الإشعارات */
+.toast-msg {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--success);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    font-size: 0.9rem;
+    pointer-events: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.toast-msg.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* شريط التنقل */
+.navbar {
+    background: rgba(10, 25, 35, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 0.8rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    padding: 0.5rem 2rem;
+    background: rgba(10, 25, 35, 0.98);
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logo-desktop {
+    display: block;
+}
+
+.logo-mobile {
+    display: none;
+}
+
+.logo-area:hover img {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav-links button {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.nav-links button:hover {
+    color: var(--accent);
+}
+
+.nav-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.nav-controls select {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.8rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: var(--text-primary);
+}
+
+.theme-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.8rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* الحاوية الرئيسية */
+.container-custom {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* أقسام الفئات */
+.category-section {
+    margin-bottom: 2.5rem;
+}
+
+.category-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+}
+
+/* شبكة الأدوات */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+}
+
+.tool-icon { 
+    font-size: 1.8rem; 
+    margin-bottom: 0.5rem; 
+}
+
+.tool-name { 
+    font-size: 1rem; 
+    font-weight: 700; 
+    margin-bottom: 0.3rem; 
+}
+
+.tool-desc { 
+    font-size: 0.7rem; 
+    color: var(--text-secondary); 
+    line-height: 1.4; 
+}
+
+/* الإعلانات */
+.ads-container {
+    background: rgba(0,0,0,0.25);
+    border-radius: 1rem;
+    padding: 0.8rem;
+    margin: 1.5rem auto;
+    text-align: center;
+    border: 1px dashed var(--accent);
+    max-width: 1200px;
+}
+
+.ads-placeholder {
+    color: var(--accent);
+    font-size: 0.75rem;
+}
+
+/* صفحة الأداة */
+.tool-page-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.back-home {
+    background: var(--accent);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: #1e2a2f;
+    margin-bottom: 1rem;
+}
+
+.tool-card-single {
+    background: var(--bg-card);
+    backdrop-filter: blur(8px);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    border: 1px solid var(--border);
+}
+
+.tool-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.tool-header h1 {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-top: 0.5rem;
+}
+
+.tool-header-icon { 
+    font-size: 3rem; 
+}
+
+.tool-desc-single {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.tool-area textarea {
+    width: 100%;
+    height: 200px;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 2px solid var(--border);
+    background: var(--input-bg);
+    color: var(--input-text);
+    font-size: 0.9rem;
+    font-family: monospace;
+    outline: none;
+    resize: vertical;
+}
+
+.tool-area textarea:focus { 
+    border-color: var(--accent); 
+}
+
+.button-group {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.btn {
+    background: var(--accent);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #1e2a2f;
+}
+
+.btn:hover { 
+    background: var(--accent-hover); 
+    transform: scale(1.02); 
+}
+
+.result-box {
+    width: 100%;
+    min-height: 150px;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 2px solid var(--border);
+    background: var(--input-bg);
+    color: var(--input-text);
+    font-size: 0.9rem;
+    font-family: monospace;
+    word-break: break-all;
+    white-space: pre-wrap;
+    margin-top: 1rem;
+}
+
+.example-hint {
+    background: rgba(255,159,74,0.2);
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.7rem;
+    cursor: pointer;
+    display: inline-block;
+    width: fit-content;
+    margin-top: 0.5rem;
+}
+
+/* تذييل الصفحة */
+footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.7rem;
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.footer-links a:hover { 
+    color: var(--accent); 
+}
+
+/* شعار الهيرو */
+.hero-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+/* شريط التمرير */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-card);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-hover);
+}
+
+/* توافق الجوال */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 0.8rem 1rem;
+    }
+    .logo-desktop {
+        display: none;
+    }
+    .logo-mobile {
+        display: block;
+    }
+    .nav-links {
+        gap: 0.8rem;
+    }
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+    .tool-card-single {
+        padding: 1rem;
+    }
+}
