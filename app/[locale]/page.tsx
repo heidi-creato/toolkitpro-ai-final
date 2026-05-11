@@ -51,12 +51,12 @@ export default function HomePage({
   const { locale } = params;
   const t = translations[locale as keyof typeof translations] || translations.en;
   
-  const tools = toolsData.tools || [];
-  
-  // تقسيم الأدوات: أول 11 أساسية (بما فيها الأدوات الجديدة)، الـ 6 التالية متوسطة، والباقي زخرفية
-  const primaryTools = tools.slice(0, 11);
-  const secondaryTools = tools.slice(11, 17);
-  const decorativeTools = tools.slice(17, 23);
+    const tools = toolsData.tools || [];
+
+  // إعادة توزيع: أول 15 أداة (رئيسية أساسية)، الـ 12 التالية (متوسطة)، والباقي (زخرفية)
+  const primaryTools = tools.slice(0, 15);
+  const secondaryTools = tools.slice(15, 27);
+  const decorativeTools = tools.slice(27, 37);
 
   const getToolName = (tool: any) => {
     switch(locale) {

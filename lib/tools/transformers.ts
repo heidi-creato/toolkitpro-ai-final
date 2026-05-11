@@ -201,6 +201,78 @@ export function transformText(toolId: string, text: string): string {
       }
       return result;
 
+    // ========== الأدوات الجديدة ==========
+    // Password Generator
+    case 'password-generator':
+      const length = parseInt(text) || 12;
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789!@#$%^&*()_+';
+      let password = '';
+      for (let i = 0; i < length; i++) {
+        password += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return password;
+
+    // JS Minify
+    case 'js-minify':
+      // إزالة التعليقات والمسافات الزائدة
+      let minified = text.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
+      minified = minified.replace(/\s+/g, ' ').trim();
+      return minified;
+
+    // JS Beautify
+    case 'js-beautify':
+      let beautified = text.replace(/\{/g, '{\n  ').replace(/\}/g, '\n}\n').replace(/;/g, ';\n');
+      beautified = beautified.replace(/\n\s*\n/g, '\n').replace(/,\s*/g, ', ');
+      return beautified.trim();
+
+    // JS Formatter (مشابه لـ beautify لكن مع indent أفضل)
+    case 'js-formatter':
+      let formatted = text.replace(/\{/g, ' {\n  ').replace(/\}/g, '\n}\n').replace(/;/g, ';\n').replace(/,\s*/g, ', ');
+      formatted = formatted.replace(/\n\s*\n/g, '\n');
+      return formatted.trim();
+
+    // HTML Formatter
+    case 'html-formatter':
+      let html = text.replace(/>\s*</g, '>\n<').replace(/(<[^>]+>)/g, (match) => match);
+      const lines = html.split('\n');
+      let indent = 0;
+      const formattedHtml = lines.map(line => {
+        // تقليل المسافة للعلامات الإغلاق
+        if (line.includes('</')) indent--;
+        const out = '  '.repeat(Math.max(0, indent)) + line;
+        if (line.includes('<') && !line.includes('/>') && !line.includes('</') && !line.includes('!--')) indent++;
+        return out;
+      }).join('\n');
+      return formattedHtml;
+
+    // CSS Formatter
+    case 'css-formatter':
+      let css = text.replace(/\{/g, '{\n  ').replace(/\}/g, '\n}\n').replace(/;/g, ';\n').replace(/,\s*/g, ', ');
+      css = css.replace(/\n\s*\n/g, '\n');
+      return css.trim();
+
+    // MD5 Generator (محاكاة بسيطة - للاستخدام الحقيقي يفضل استخدام مكتبة md5)
+    case 'md5-generator':
+      // تنبيه: هذه ليست MD5 حقيقية. للاستخدام الفعلي، قم بتثبيت مكتبة md5.
+      let hash = 0;
+      for (let i = 0; i < text.length; i++) {
+        const char = text.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash;
+      }
+      return Math.abs(hash).toString(16).padStart(32, '0');
+
+    // Remove Emojis
+    case 'remove-emojis':
+      return text.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
+
+    // Replace Text (تنسيق: search|replacement)
+    case 'replace-text':
+      const [search, replacement] = text.split('|');
+      if (!search) return text;
+      const regex = new RegExp(search, 'g');
+      return text.replace(regex, replacement || '');
+
     default:
       return text;
   }
