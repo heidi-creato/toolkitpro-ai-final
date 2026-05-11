@@ -2,16 +2,15 @@ export function transformText(toolId: string, text: string): string {
   if (!text) return '';
 
   switch (toolId) {
-    // 1. JSON Formatter
-    case 'json-formatter':
+    case 'json-formatter': {
       try {
         return JSON.stringify(JSON.parse(text), null, 2);
       } catch {
         return '❌ Invalid JSON - JSON غير صالح';
       }
+    }
 
-    // 2. Slug Generator
-    case 'slug-generator':
+    case 'slug-generator': {
       return text
         .toLowerCase()
         .trim()
@@ -19,76 +18,76 @@ export function transformText(toolId: string, text: string): string {
         .replace(/\s+/g, '-')
         .replace(/--+/g, '-')
         .replace(/^-+|-+$/g, '') || 'no-text';
+    }
 
-    // 3. Word Counter
-    case 'word-counter':
+    case 'word-counter': {
       const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
       const chars = text.length;
       const charsNoSpace = text.replace(/\s/g, '').length;
       const lines = text.split(/\r?\n/).length;
       return `📊 Words: ${words}\n🔢 Characters (with spaces): ${chars}\n📝 Characters (no spaces): ${charsNoSpace}\n📄 Lines: ${lines}`;
+    }
 
-    // 4. Hashtag Generator
-    case 'hashtag-generator':
+    case 'hashtag-generator': {
       const hashtagWords = text.match(/[\w\u0600-\u06FF]+/g);
       if (!hashtagWords) return 'No words found - لا توجد كلمات';
       const uniqueHashtags = [...new Set(hashtagWords.map(w => '#' + w.toLowerCase()))];
       return uniqueHashtags.join(' ');
+    }
 
-    // 5. Remove Duplicate Lines
-    case 'remove-duplicate-lines':
+    case 'remove-duplicate-lines': {
       const duplicateLines = text.split(/\r?\n/);
       return [...new Map(duplicateLines.map(l => [l, l])).values()].join('\n');
+    }
 
-    // 6. Uppercase
-    case 'uppercase':
+    case 'uppercase': {
       return text.toUpperCase();
+    }
 
-    // 7. Lowercase
-    case 'lowercase':
+    case 'lowercase': {
       return text.toLowerCase();
+    }
 
-    // 8. Text Reverser
-    case 'text-reverser':
+    case 'text-reverser': {
       return Array.from(text).reverse().join('');
+    }
 
-    // 9. Character Counter
-    case 'character-counter':
+    case 'character-counter': {
       const totalChars = text.length;
       const letters = (text.match(/[a-zA-Z\u0600-\u06FF]/g) || []).length;
       const numbers = (text.match(/[0-9]/g) || []).length;
       const specials = (text.match(/[^a-zA-Z0-9\u0600-\u06FF\s\n]/g) || []).length;
       const spaces = (text.match(/\s/g) || []).length;
       return `🔢 Total: ${totalChars}\n🔤 Letters: ${letters}\n🔢 Numbers: ${numbers}\n✨ Special: ${specials}\n␣ Spaces: ${spaces}`;
+    }
 
-    // 10. Remove Spaces
-    case 'remove-spaces':
+    case 'remove-spaces': {
       return text.trim().replace(/\s+/g, ' ');
+    }
 
-    // 11. Sentence Case
-    case 'sentence-case':
+    case 'sentence-case': {
       let sentenceResult = text.toLowerCase();
       sentenceResult = sentenceResult.replace(/^(\s*)([a-z\u0621-\u064A])/i, (_, s, l) => s + l.toUpperCase());
       sentenceResult = sentenceResult.replace(/([.!?؟!])\s+([a-z\u0621-\u064A])/g, (_, p, l) => p + ' ' + l.toUpperCase());
       return sentenceResult;
+    }
 
-    // 12. Title Case
-    case 'title-case':
+    case 'title-case': {
       return text.split(/(\s+)/).map(seg => {
         if (seg.trim().length === 0) return seg;
         return seg.charAt(0).toUpperCase() + seg.slice(1).toLowerCase();
       }).join('');
+    }
 
-    // 13. Text Cleaner
-    case 'text-cleaner':
+    case 'text-cleaner': {
       return text.replace(/[^\w\s\u0600-\u06FF.،!؟]/g, '').replace(/\s+/g, ' ').trim();
+    }
 
-    // 14. Strikethrough
-    case 'strikethrough':
+    case 'strikethrough': {
       return text.split('').map(ch => ch + '̶').join('');
+    }
 
-    // 15. Upside Down
-    case 'upside-down':
+    case 'upside-down': {
       const upsideMap: Record<string, string> = {
         'a': 'ɐ', 'b': 'q', 'c': 'ɔ', 'd': 'p', 'e': 'ǝ', 'f': 'ɟ', 'g': 'ɓ', 'h': 'ɥ',
         'i': 'ı', 'j': 'ɾ', 'k': 'ʞ', 'l': 'ʃ', 'm': 'ɯ', 'n': 'u', 'o': 'o', 'p': 'd',
@@ -101,52 +100,52 @@ export function transformText(toolId: string, text: string): string {
         '.': '˙', ',': '`', ';': '؛', ':': ':', '(': ')', ')': '(', '[': ']', ']': '['
       };
       return text.split('').map(ch => upsideMap[ch] || ch).reverse().join('');
+    }
 
-    // 16. Mirror Text
-    case 'mirror-text':
+    case 'mirror-text': {
       return Array.from(text).reverse().join('');
+    }
 
-    // 17. Italic Text
-    case 'italic-text':
+    case 'italic-text': {
       return text.split('').map(ch => {
         if (/[a-zA-Z]/.test(ch)) {
           return String.fromCodePoint(ch.charCodeAt(0) + 120257);
         }
         return ch;
       }).join('');
+    }
 
-    // 18. Underline Text
-    case 'underline-text':
+    case 'underline-text': {
       return text.split('').map(ch => ch + '̲').join('');
+    }
 
-    // 19. Bold Text
-    case 'bold-text':
+    case 'bold-text': {
       return text.split('').map(ch => {
         if (/[a-zA-Z]/.test(ch)) {
           return String.fromCodePoint(ch.charCodeAt(0) + 120211);
         }
         return ch;
       }).join('');
+    }
 
-    // 20. Alternating Case
-    case 'alternating-case':
+    case 'alternating-case': {
       return text.split('').map((ch, i) => {
         if (/[a-zA-Z\u0621-\u064A]/.test(ch)) {
           return i % 2 === 0 ? ch.toLowerCase() : ch.toUpperCase();
         }
         return ch;
       }).join('');
+    }
 
-    // 21. Invert Case
-    case 'invert-case':
+    case 'invert-case': {
       return text.split('').map(ch => {
         if (ch === ch.toLowerCase() && ch !== ch.toUpperCase()) return ch.toUpperCase();
         if (ch === ch.toUpperCase() && ch !== ch.toLowerCase()) return ch.toLowerCase();
         return ch;
       }).join('');
+    }
 
-    // 22. Small Text
-    case 'small-text':
+    case 'small-text': {
       const smallMap: Record<string, string> = {
         'a': 'ᴀ', 'b': 'ʙ', 'c': 'ᴄ', 'd': 'ᴅ', 'e': 'ᴇ', 'f': 'ꜰ', 'g': 'ɢ', 'h': 'ʜ',
         'i': 'ɪ', 'j': 'ᴊ', 'k': 'ᴋ', 'l': 'ʟ', 'm': 'ᴍ', 'n': 'ɴ', 'o': 'ᴏ', 'p': 'ᴘ',
@@ -154,35 +153,35 @@ export function transformText(toolId: string, text: string): string {
         'y': 'ʏ', 'z': 'ᴢ'
       };
       return text.split('').map(ch => smallMap[ch.toLowerCase()] || ch).join('');
+    }
 
-    // 23. Wide Text
-    case 'wide-text':
+    case 'wide-text': {
       return text.split('').map(ch => {
         if (/[a-zA-Z]/.test(ch)) {
           return String.fromCodePoint(ch.charCodeAt(0) + 65248);
         }
         return ch;
       }).join('');
+    }
 
-    // 24. Binary Converter
-    case 'binary-converter':
+    case 'binary-converter': {
       return text.split('').map(ch => ch.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
+    }
 
-    // 25. Unicode Converter
-    case 'unicode-converter':
+    case 'unicode-converter': {
       return text.split('').map(ch => '\\u' + ch.charCodeAt(0).toString(16).padStart(4, '0')).join('');
+    }
 
-    // 26. Invisible Text
-    case 'invisible-text':
+    case 'invisible-text': {
       return text.split('').map(() => '​').join('');
+    }
 
-    // 27. Sort Words
-    case 'sort-words':
+    case 'sort-words': {
       return text.split(/\s+/).sort().join(' ');
+    }
 
-    // 28. Roman Numeral
     case 'romannumeral':
-    case 'roman-numeral':
+    case 'roman-numeral': {
       const num = parseInt(text);
       if (isNaN(num)) return '❌ Please enter a valid number - الرجاء إدخال رقم صحيح';
       if (num < 1 || num > 3999) return '❌ Number must be between 1 and 3999 - الرقم يجب أن يكون بين 1 و 3999';
@@ -200,10 +199,10 @@ export function transformText(toolId: string, text: string): string {
         }
       }
       return result;
+    }
 
     // ========== الأدوات الجديدة ==========
-    // Password Generator
-    case 'password-generator':
+    case 'password-generator': {
       const length = parseInt(text) || 12;
       const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789!@#$%^&*()_+';
       let password = '';
@@ -211,49 +210,47 @@ export function transformText(toolId: string, text: string): string {
         password += chars.charAt(Math.floor(Math.random() * chars.length));
       }
       return password;
+    }
 
-    // JS Minify
-    case 'js-minify':
-      // إزالة التعليقات والمسافات الزائدة
+    case 'js-minify': {
       let minified = text.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
       minified = minified.replace(/\s+/g, ' ').trim();
       return minified;
+    }
 
-    // JS Beautify
-    case 'js-beautify':
+    case 'js-beautify': {
       let beautified = text.replace(/\{/g, '{\n  ').replace(/\}/g, '\n}\n').replace(/;/g, ';\n');
       beautified = beautified.replace(/\n\s*\n/g, '\n').replace(/,\s*/g, ', ');
       return beautified.trim();
+    }
 
-    // JS Formatter (مشابه لـ beautify لكن مع indent أفضل)
-    case 'js-formatter':
+    case 'js-formatter': {
       let formatted = text.replace(/\{/g, ' {\n  ').replace(/\}/g, '\n}\n').replace(/;/g, ';\n').replace(/,\s*/g, ', ');
       formatted = formatted.replace(/\n\s*\n/g, '\n');
       return formatted.trim();
+    }
 
-    // HTML Formatter
-    case 'html-formatter':
-      let html = text.replace(/>\s*</g, '>\n<').replace(/(<[^>]+>)/g, (match) => match);
-      const lines = html.split('\n');
-      let indent = 0;
-      const formattedHtml = lines.map(line => {
-        // تقليل المسافة للعلامات الإغلاق
-        if (line.includes('</')) indent--;
-        const out = '  '.repeat(Math.max(0, indent)) + line;
-        if (line.includes('<') && !line.includes('/>') && !line.includes('</') && !line.includes('!--')) indent++;
+    case 'html-formatter': {
+      let htmlTemp = text.replace(/>\s*</g, '>\n<').replace(/(<[^>]+>)/g, (match) => match);
+      const linesArr = htmlTemp.split('\n');
+      let indentLevel = 0;
+      const formattedHtml = linesArr.map(line => {
+        if (line.includes('</')) indentLevel--;
+        const out = '  '.repeat(Math.max(0, indentLevel)) + line;
+        if (line.includes('<') && !line.includes('/>') && !line.includes('</') && !line.includes('!--')) indentLevel++;
         return out;
       }).join('\n');
       return formattedHtml;
+    }
 
-    // CSS Formatter
-    case 'css-formatter':
+    case 'css-formatter': {
       let css = text.replace(/\{/g, '{\n  ').replace(/\}/g, '\n}\n').replace(/;/g, ';\n').replace(/,\s*/g, ', ');
       css = css.replace(/\n\s*\n/g, '\n');
       return css.trim();
+    }
 
-    // MD5 Generator (محاكاة بسيطة - للاستخدام الحقيقي يفضل استخدام مكتبة md5)
-    case 'md5-generator':
-      // تنبيه: هذه ليست MD5 حقيقية. للاستخدام الفعلي، قم بتثبيت مكتبة md5.
+    case 'md5-generator': {
+      // ملاحظة: هذه ليست MD5 حقيقية. للاستخدام الفعلي، قم بتثبيت مكتبة md5.
       let hash = 0;
       for (let i = 0; i < text.length; i++) {
         const char = text.charCodeAt(i);
@@ -261,17 +258,18 @@ export function transformText(toolId: string, text: string): string {
         hash = hash & hash;
       }
       return Math.abs(hash).toString(16).padStart(32, '0');
+    }
 
-    // Remove Emojis
-    case 'remove-emojis':
+    case 'remove-emojis': {
       return text.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu, '');
+    }
 
-    // Replace Text (تنسيق: search|replacement)
-    case 'replace-text':
+    case 'replace-text': {
       const [search, replacement] = text.split('|');
       if (!search) return text;
       const regex = new RegExp(search, 'g');
       return text.replace(regex, replacement || '');
+    }
 
     default:
       return text;
