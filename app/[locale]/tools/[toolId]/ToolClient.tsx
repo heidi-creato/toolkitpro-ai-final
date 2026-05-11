@@ -145,121 +145,28 @@ const pageTranslations = {
   }
 };
 
-// ========== ⭐⭐⭐ المحتوى المخصص لكل أداة (بدون تصدير منفصل) ⭐⭐⭐ ==========
+// ========== ⭐⭐⭐ هنا تضاف النصوص المخصصة لكل أداة ⭐⭐⭐ ==========
 const toolCustomContent: Record<string, Record<string, any>> = {
-  // أداة "uppercase" (تحويل إلى أحرف كبيرة) - دعم 5 لغات
+  // مثال لأداة "uppercase"
   'uppercase': {
     ar: {
-      title: 'أداة تحويل إلى أحرف كبيرة (UPPERCASE)',
-      description: '🌟 **أداة تحويل النص إلى أحرف كبيرة** من ToolKit ProAI – حول أي نص إلى حروف كبيرة (UPPERCASE) بضغطة زر. مثالية للعناوين البارزة، التنبيهات القوية، النصوص البرمجية، أو أي موقف تحتاج فيه إلى تكبير جميع الحروف.',
-      whyUse: [
-        '⚡ تحويل فوري بنقرة واحدة – بدون تعقيد',
-        '🔒 آمن تماماً – لا نُخزن نصوصك أبداً',
-        '🌍 يدعم اللغة العربية والإنجليزية والفرنسية والألمانية والإسبانية',
-        '📱 يعمل على جميع الأجهزة (هواتف، أجهزة لوحية، حواسيب)',
-        '💾 انسخ النتيجة مباشرة أو حمّلها كملف نصي (.txt)'
-      ],
-      howUse: [
-        '1. اكتب أو الصق النص في الحقل العلوي',
-        '2. اضغط على زر "تحويل" (Convert)',
-        '3. استخدم زر "نسخ" لنسخ النتيجة، أو "تحميل" لحفظها كملف نصي'
-      ],
-      faq: [
-        { q: 'ما الفرق بين هذه الأداة وأداة "capitalize"؟', a: 'أداة "uppercase" تحول كل الحروف إلى كبيرة (مثال: hello → HELLO)، بينما "capitalize" تجعل الحرف الأول كبيراً فقط.' },
-        { q: 'هل تدعم الأحرف الخاصة والأرقام؟', a: 'نعم، تبقى الأرقام والرموز كما هي دون تغيير، فقط الحروف الأبجدية تُحوَّل.' },
-        { q: 'هل أحتاج إلى إنشاء حساب؟', a: 'لا، الأداة مجانية بالكامل وبدون تسجيل دخول.' }
-      ]
+      description: 'أداة **تحويل إلى أحرف كبيرة** من ToolKit ProAI تحول كل النص إلى أحرف كبيرة (UPPERCASE). مثالية للعناوين والتنبيهات والنصوص البارزة.',
+      whyUse: ['⚡ تحويل فوري بنقرة واحدة', '🔒 آمن تماماً – لا يتم تخزين أي نص', '🌍 يدعم 5 لغات', '📱 يعمل على جميع الأجهزة', '💾 نسخ أو تحميل النتيجة'],
+      howUse: ['أدخل النص في المربع العلوي', 'اضغط زر "تحويل"', 'انسخ النتيجة أو حملها كملف نصي'],
+      faq: [{ q: 'ما هي أداة تحويل إلى أحرف كبيرة؟', a: 'تحول كل الحروف الصغيرة إلى كبيرة.' }, { q: 'هل الأداة مجانية؟', a: 'نعم، مجانية بالكامل.' }]
     },
     en: {
-      title: 'Uppercase Text Converter Tool',
-      description: '🌟 **Uppercase Converter** by ToolKit ProAI – instantly transform any text to ALL CAPS (UPPERCASE). Perfect for headings, alerts, programming constants, or any situation requiring full capitalization.',
-      whyUse: [
-        '⚡ One-click instant conversion',
-        '🔒 100% secure – no text is ever stored',
-        '🌍 Supports 5 languages: English, Arabic, French, German, Spanish',
-        '📱 Works flawlessly on all devices',
-        '💾 Copy to clipboard or download as .txt file'
-      ],
-      howUse: [
-        '1. Type or paste your text into the input box',
-        '2. Click the "Convert" button',
-        '3. Click "Copy" to copy the result, or "Download" to save as a text file'
-      ],
-      faq: [
-        { q: 'What is the difference between Uppercase and Capitalize?', a: 'Uppercase converts every letter to capital (e.g., hello → HELLO). Capitalize only capitalizes the first letter of each word.' },
-        { q: 'Does it handle special characters and numbers?', a: 'Yes, numbers and symbols remain unchanged; only alphabet letters are converted.' },
-        { q: 'Do I need an account?', a: 'No, the tool is completely free with no login required.' }
-      ]
-    },
-    de: {
-      title: 'Großbuchstaben-Konverter (Uppercase)',
-      description: '🌟 **Großbuchstaben-Werkzeug** von ToolKit ProAI – wandelt jeden Text sofort in Großbuchstaben (UPPERCASE) um. Ideal für Überschriften, Warnungen, Programmierung oder formelle Dokumente.',
-      whyUse: [
-        '⚡ Sofortige Umwandlung mit einem Klick',
-        '🔒 100% sicher – keine Textspeicherung',
-        '🌍 Unterstützt 5 Sprachen: Deutsch, Englisch, Französisch, Spanisch, Arabisch',
-        '📱 Funktioniert auf allen Geräten',
-        '💾 Ergebnis kopieren oder als .txt herunterladen'
-      ],
-      howUse: [
-        '1. Text in das obere Feld eingeben oder einfügen',
-        '2. Klicken Sie auf die Schaltfläche "Umwandeln"',
-        '3. Kopieren Sie das Ergebnis oder laden Sie es als Textdatei herunter'
-      ],
-      faq: [
-        { q: 'Was ist der Unterschied zwischen Uppercase und Capitalize?', a: 'Uppercase macht alle Buchstaben groß (z. B. hallo → HALLO). Capitalize macht nur den ersten Buchstaben jedes Wortes groß.' },
-        { q: 'Werden Umlaute (ä, ö, ü) richtig verarbeitet?', a: 'Ja, ä wird zu Ä, ö zu Ö, ü zu Ü und ß bleibt ß (da es keine Großform hat, wird es zu SS in manchen Kontexten – aber hier bleibt es ß gemäß Standard).' },
-        { q: 'Ist die Nutzung kostenlos?', a: 'Ja, völlig kostenlos ohne Anmeldung.' }
-      ]
-    },
-    fr: {
-      title: 'Convertisseur en majuscules (Uppercase)',
-      description: '🌟 **Outil de conversion en majuscules** par ToolKit ProAI – transformez instantanément n’importe quel texte en MAJUSCULES. Idéal pour les titres, alertes, constantes en programmation ou textes officiels.',
-      whyUse: [
-        '⚡ Conversion instantanée en un clic',
-        '🔒 100% sécurisé – aucun texte n’est stocké',
-        '🌍 Prend en charge 5 langues : français, anglais, allemand, espagnol, arabe',
-        '📱 Fonctionne sur tous les appareils',
-        '💾 Copier ou télécharger le résultat au format .txt'
-      ],
-      howUse: [
-        '1. Saisissez ou collez votre texte dans le champ supérieur',
-        '2. Cliquez sur le bouton "Convertir"',
-        '3. Copiez le résultat ou téléchargez-le en tant que fichier texte'
-      ],
-      faq: [
-        { q: 'Différence entre "Uppercase" et "Capitalize" ?', a: 'Uppercase met tout en majuscules (ex. bonjour → BONJOUR). Capitalize met seulement la première lettre de chaque mot en majuscule.' },
-        { q: 'Gère-t-il les caractères accentués (é, è, ç) ?', a: 'Oui, é devient É, è devient È, ç devient Ç, etc. Tous les accents sont conservés.' },
-        { q: 'Dois-je créer un compte ?', a: 'Non, l’outil est entièrement gratuit et sans inscription.' }
-      ]
-    },
-    es: {
-      title: 'Convertidor a mayúsculas (Uppercase)',
-      description: '🌟 **Herramienta de mayúsculas** de ToolKit ProAI – convierte cualquier texto a MAYÚSCULAS (UPPERCASE) al instante. Perfecto para títulos, alertas, constantes en programación o textos destacados.',
-      whyUse: [
-        '⚡ Conversión instantánea con un clic',
-        '🔒 100% seguro – no se almacena ningún texto',
-        '🌍 Soporta 5 idiomas: español, inglés, alemán, francés, árabe',
-        '📱 Funciona en todos los dispositivos',
-        '💾 Copiar o descargar el resultado como archivo .txt'
-      ],
-      howUse: [
-        '1. Escribe o pega tu texto en el cuadro superior',
-        '2. Haz clic en el botón "Convertir"',
-        '3. Copia el resultado o descárgalo como archivo de texto'
-      ],
-      faq: [
-        { q: '¿Diferencia entre "Uppercase" y "Capitalize"?', a: 'Uppercase convierte todas las letras a mayúsculas (ej. hola → HOLA). Capitalize solo pone en mayúscula la primera letra de cada palabra.' },
-        { q: '¿Maneja correctamente las letras con tilde (á, é, í, ó, ú, ü, ñ)?', a: 'Sí, á → Á, é → É, í → Í, ó → Ó, ú → Ú, ü → Ü, ñ → Ñ, respetando las reglas del español.' },
-        { q: '¿Es gratuito?', a: 'Sí, completamente gratuito y sin necesidad de registro.' }
-      ]
+      description: 'The **Uppercase** tool converts all text to capital letters. Perfect for headings, alerts, and prominent text.',
+      whyUse: ['⚡ Instant conversion with one click', '🔒 100% secure – no text is stored', '🌍 Supports 5 languages', '📱 Works on all devices', '💾 Copy or download result'],
+      howUse: ['Enter your text in the input box', 'Click "Convert"', 'Copy or download the result'],
+      faq: [{ q: 'What is Uppercase tool?', a: 'It converts all lowercase letters to uppercase.' }, { q: 'Is it free?', a: 'Yes, completely free.' }]
     }
-  }
+  },
+  // يمكنك إضافة بقية الأدوات بنفس الطريقة
 };
 
 // ========== دالة تجلب المحتوى المخصص أو العام ==========
 function getLocalizedContent(toolId: string, toolName: string, locale: string) {
-  // محاولة الحصول على المحتوى المخصص لهذه الأداة وهذه اللغة
   const custom = toolCustomContent[toolId]?.[locale];
   if (custom) {
     return {
@@ -270,7 +177,7 @@ function getLocalizedContent(toolId: string, toolName: string, locale: string) {
     };
   }
 
-  // --- محتوى عام احتياطي (يظهر إذا لم تجد إدخالاً مخصصاً) ---
+  // محتوى عام احتياطي
   const whyUseGeneral = {
     ar: [
       '⚡ نتائج فورية – اكتب وسترى النتيجة مباشرة',
@@ -371,9 +278,7 @@ function getLocalizedContent(toolId: string, toolName: string, locale: string) {
   };
 
   return {
-    description: (locale === 'ar' 
-      ? `أداة **${toolName}** من ToolKit ProAI تسمح لك بمعالجة النصوص بسهولة وسرعة. مثالية للكتّاب والمطورين وصناع المحتوى. استخدمها أونلاين مجاناً – بدون تثبيت.` 
-      : `The **${toolName}** tool from ToolKit ProAI lets you process text easily and quickly. Perfect for writers, developers, and content creators. Use it online for free — no installation required.`),
+    description: (locale === 'ar' ? `أداة **${toolName}** من ToolKit ProAI تسمح لك بمعالجة النصوص بسهولة وسرعة. مثالية للكتّاب والمطورين وصناع المحتوى. استخدمها أونلاين مجاناً – بدون تثبيت.` : `The **${toolName}** tool from ToolKit ProAI lets you process text easily and quickly. Perfect for writers, developers, and content creators. Use it online for free — no installation required.`),
     whyUse: whyUseGeneral[locale as keyof typeof whyUseGeneral] || whyUseGeneral.en,
     howUse: howUseGeneral[locale as keyof typeof howUseGeneral] || howUseGeneral.en,
     faq: faqGeneral[locale as keyof typeof faqGeneral] || faqGeneral.en
@@ -389,22 +294,18 @@ export default function ToolClient({ params }: { params: { locale: string; toolI
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [copied, setCopied] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [stats, setStats] = useState({ chars: 0, charsNoSpace: 0, words: 0, lines: 0 });
   
+  // تحديث فوري بدون أي تأخير أو تحميل
   useEffect(() => {
     if (input) {
-      setIsLoading(true);
-      setTimeout(() => {
-        const result = transformText(toolId, input);
-        setOutput(result);
-        const chars = input.length;
-        const charsNoSpace = input.replace(/\s/g, '').length;
-        const words = input.trim() === '' ? 0 : input.trim().split(/\s+/).length;
-        const lines = input.split(/\r?\n/).length;
-        setStats({ chars, charsNoSpace, words, lines });
-        setIsLoading(false);
-      }, 100);
+      const result = transformText(toolId, input);
+      setOutput(result);
+      const chars = input.length;
+      const charsNoSpace = input.replace(/\s/g, '').length;
+      const words = input.trim() === '' ? 0 : input.trim().split(/\s+/).length;
+      const lines = input.split(/\r?\n/).length;
+      setStats({ chars, charsNoSpace, words, lines });
     } else {
       setOutput('');
       setStats({ chars: 0, charsNoSpace: 0, words: 0, lines: 0 });
@@ -532,16 +433,10 @@ export default function ToolClient({ params }: { params: { locale: string; toolI
           
           <label style={{ display: 'block', marginTop: '1rem', marginBottom: '0.5rem', fontWeight: '500' }}>{t.outputLabel}</label>
           
-          {isLoading ? (
-            <div style={{ display: 'flex', justifyContent: 'center', padding: '2rem' }}>
-              <div className="loading-spinner"></div>
-              <span style={{ marginLeft: '1rem' }}>{t.loading}</span>
-            </div>
-          ) : (
-            <div className="result-box" dir={isRTL ? 'rtl' : 'ltr'}>
-              {output || t.resultPlaceholder}
-            </div>
-          )}
+          {/* تم إزالة شريط التحميل تماماً – النتيجة تظهر فوراً */}
+          <div className="result-box" dir={isRTL ? 'rtl' : 'ltr'}>
+            {output || t.resultPlaceholder}
+          </div>
           
           {output && (
             <div className="button-group" style={{ marginTop: '1rem' }}>
@@ -558,23 +453,23 @@ export default function ToolClient({ params }: { params: { locale: string; toolI
         </div>
       </div>
       
-      {/* ========== المحتوى الوصفي المتعدد اللغات (مخصص أو عام) ========== */}
+      {/* ========== المحتوى الوصفي المتعدد اللغات ========== */}
       <div className="tool-card-single" style={{ marginTop: '1.5rem' }} dir={isRTL ? 'rtl' : 'ltr'}>
         <h2 style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>{toolName}</h2>
         <p style={{ lineHeight: '1.7', marginBottom: '1rem' }}>{seoContent.description}</p>
         
         <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--accent)' }}>{t.whyUseTitle}</h3>
         <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginBottom: '1rem' }}>
-          {seoContent.whyUse.map((item: string, idx: number) => <li key={idx}>{item}</li>)}
+          {seoContent.whyUse.map((item, idx) => <li key={idx}>{item}</li>)}
         </ul>
         
         <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--accent)' }}>{t.howUseTitle}</h3>
         <ol style={{ listStyle: 'decimal', paddingLeft: '1.5rem', marginBottom: '1rem' }}>
-          {seoContent.howUse.map((item: string, idx: number) => <li key={idx}>{item}</li>)}
+          {seoContent.howUse.map((item, idx) => <li key={idx}>{item}</li>)}
         </ol>
         
         <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--accent)' }}>{t.faqTitle}</h3>
-        {seoContent.faq.map((item: { q: string; a: string }, idx: number) => (
+        {seoContent.faq.map((item, idx) => (
           <div key={idx} style={{ marginBottom: '1rem' }}>
             <strong>{item.q}</strong>
             <p style={{ marginTop: '0.25rem', color: 'var(--text-secondary)' }}>{item.a}</p>
