@@ -6,63 +6,149 @@ import Link from 'next/link';
 import toolsData from '@/data/tools.json';
 import { transformText } from '@/lib/tools/transformers';
 
-// ========== ترجمة واجهة الأداة ==========
+// ========== ترجمة واجهة الأداة (الأزرار والتسميات + العناوين) ==========
 const pageTranslations = {
   ar: {
-    back: '🏠 العودة للرئيسية', paste: '📋 لصق', example: '📄 مثال', clear: '🗑️ مسح',
-    exampleHint: '📋 مثال: اضغط لاستخدام النص التجريبي', copy: '📋 نسخ النتيجة', copied: '✅ تم النسخ!',
-    inputLabel: '📝 النص المصدر', outputLabel: '✨ النتيجة', placeholder: 'أدخل النص هنا...',
-    resultPlaceholder: 'ستظهر النتيجة هنا...', notFound: '🔍 الأداة غير موجودة', backHome: 'العودة للرئيسية',
-    similarTools: '🔗 أدوات قد تهمك أيضاً', loading: 'جاري المعالجة...',
-    countChars: 'عدد الأحرف (مع المسافات):', countCharsNoSpace: 'عدد الأحرف (بدون مسافات):',
-    countWords: 'عدد الكلمات:', countLines: 'عدد الأسطر:',
-    exportTXT: '📄 TXT', exportCSV: '📊 CSV', exportPDF: '📑 PDF'
+    back: '🏠 العودة للرئيسية',
+    paste: '📋 لصق',
+    example: '📄 مثال',
+    clear: '🗑️ مسح',
+    exampleHint: '📋 مثال: اضغط لاستخدام النص التجريبي',
+    copy: '📋 نسخ النتيجة',
+    copied: '✅ تم النسخ!',
+    inputLabel: '📝 النص المصدر',
+    outputLabel: '✨ النتيجة',
+    placeholder: 'أدخل النص هنا...',
+    resultPlaceholder: 'ستظهر النتيجة هنا...',
+    notFound: '🔍 الأداة غير موجودة',
+    backHome: 'العودة للرئيسية',
+    similarTools: '🔗 أدوات قد تهمك أيضاً',
+    loading: 'جاري المعالجة...',
+    countChars: 'عدد الأحرف (مع المسافات):',
+    countCharsNoSpace: 'عدد الأحرف (بدون مسافات):',
+    countWords: 'عدد الكلمات:',
+    countLines: 'عدد الأسطر:',
+    exportTXT: '📄 TXT',
+    exportCSV: '📊 CSV',
+    exportPDF: '📑 PDF',
+    // العناوين الجديدة
+    whyUseTitle: '✨ لماذا تستخدم هذه الأداة؟',
+    howUseTitle: '📖 كيفية الاستخدام',
+    faqTitle: '❓ الأسئلة الشائعة'
   },
   en: {
-    back: '🏠 Back to Home', paste: '📋 Paste', example: '📄 Example', clear: '🗑️ Clear',
-    exampleHint: '📋 Example: Click to use sample text', copy: '📋 Copy Result', copied: '✅ Copied!',
-    inputLabel: '📝 Source Text', outputLabel: '✨ Result', placeholder: 'Enter your text here...',
-    resultPlaceholder: 'Result will appear here...', notFound: '🔍 Tool not found', backHome: 'Back to Home',
-    similarTools: '🔗 You might also like', loading: 'Processing...',
-    countChars: 'Characters (with spaces):', countCharsNoSpace: 'Characters (no spaces):',
-    countWords: 'Words:', countLines: 'Lines:',
-    exportTXT: '📄 TXT', exportCSV: '📊 CSV', exportPDF: '📑 PDF'
+    back: '🏠 Back to Home',
+    paste: '📋 Paste',
+    example: '📄 Example',
+    clear: '🗑️ Clear',
+    exampleHint: '📋 Example: Click to use sample text',
+    copy: '📋 Copy Result',
+    copied: '✅ Copied!',
+    inputLabel: '📝 Source Text',
+    outputLabel: '✨ Result',
+    placeholder: 'Enter your text here...',
+    resultPlaceholder: 'Result will appear here...',
+    notFound: '🔍 Tool not found',
+    backHome: 'Back to Home',
+    similarTools: '🔗 You might also like',
+    loading: 'Processing...',
+    countChars: 'Characters (with spaces):',
+    countCharsNoSpace: 'Characters (no spaces):',
+    countWords: 'Words:',
+    countLines: 'Lines:',
+    exportTXT: '📄 TXT',
+    exportCSV: '📊 CSV',
+    exportPDF: '📑 PDF',
+    whyUseTitle: '✨ Why Use This Tool?',
+    howUseTitle: '📖 How to Use',
+    faqTitle: '❓ Frequently Asked Questions'
   },
   de: {
-    back: '🏠 Zurück zur Startseite', paste: '📋 Einfügen', example: '📄 Beispiel', clear: '🗑️ Löschen',
-    exampleHint: '📋 Beispiel: Klicken Sie hier', copy: '📋 Ergebnis kopieren', copied: '✅ Kopiert!',
-    inputLabel: '📝 Quelltext', outputLabel: '✨ Ergebnis', placeholder: 'Text hier eingeben...',
-    resultPlaceholder: 'Ergebnis wird hier angezeigt...', notFound: '🔍 Werkzeug nicht gefunden', backHome: 'Zurück zur Startseite',
-    similarTools: '🔗 Das könnte Ihnen auch gefallen', loading: 'Verarbeitung...',
-    countChars: 'Zeichen (mit Leerzeichen):', countCharsNoSpace: 'Zeichen (ohne Leerzeichen):',
-    countWords: 'Wörter:', countLines: 'Zeilen:',
-    exportTXT: '📄 TXT', exportCSV: '📊 CSV', exportPDF: '📑 PDF'
+    back: '🏠 Zurück zur Startseite',
+    paste: '📋 Einfügen',
+    example: '📄 Beispiel',
+    clear: '🗑️ Löschen',
+    exampleHint: '📋 Beispiel: Klicken Sie hier',
+    copy: '📋 Ergebnis kopieren',
+    copied: '✅ Kopiert!',
+    inputLabel: '📝 Quelltext',
+    outputLabel: '✨ Ergebnis',
+    placeholder: 'Text hier eingeben...',
+    resultPlaceholder: 'Ergebnis wird hier angezeigt...',
+    notFound: '🔍 Werkzeug nicht gefunden',
+    backHome: 'Zurück zur Startseite',
+    similarTools: '🔗 Das könnte Ihnen auch gefallen',
+    loading: 'Verarbeitung...',
+    countChars: 'Zeichen (mit Leerzeichen):',
+    countCharsNoSpace: 'Zeichen (ohne Leerzeichen):',
+    countWords: 'Wörter:',
+    countLines: 'Zeilen:',
+    exportTXT: '📄 TXT',
+    exportCSV: '📊 CSV',
+    exportPDF: '📑 PDF',
+    whyUseTitle: '✨ Warum dieses Werkzeug?',
+    howUseTitle: '📖 Anleitung',
+    faqTitle: '❓ Häufig gestellte Fragen'
   },
   fr: {
-    back: '🏠 Retour à l\'accueil', paste: '📋 Coller', example: '📄 Exemple', clear: '🗑️ Effacer',
-    exampleHint: '📋 Exemple: Cliquez ici', copy: '📋 Copier le résultat', copied: '✅ Copié!',
-    inputLabel: '📝 Texte source', outputLabel: '✨ Résultat', placeholder: 'Entrez votre texte...',
-    resultPlaceholder: 'Le résultat apparaîtra ici...', notFound: '🔍 Outil non trouvé', backHome: 'Retour à l\'accueil',
-    similarTools: '🔗 Cela pourrait aussi vous intéresser', loading: 'Traitement...',
-    countChars: 'Caractères (avec espaces):', countCharsNoSpace: 'Caractères (sans espaces):',
-    countWords: 'Mots:', countLines: 'Lignes:',
-    exportTXT: '📄 TXT', exportCSV: '📊 CSV', exportPDF: '📑 PDF'
+    back: '🏠 Retour à l\'accueil',
+    paste: '📋 Coller',
+    example: '📄 Exemple',
+    clear: '🗑️ Effacer',
+    exampleHint: '📋 Exemple: Cliquez ici',
+    copy: '📋 Copier le résultat',
+    copied: '✅ Copié!',
+    inputLabel: '📝 Texte source',
+    outputLabel: '✨ Résultat',
+    placeholder: 'Entrez votre texte...',
+    resultPlaceholder: 'Le résultat apparaîtra ici...',
+    notFound: '🔍 Outil non trouvé',
+    backHome: 'Retour à l\'accueil',
+    similarTools: '🔗 Cela pourrait aussi vous intéresser',
+    loading: 'Traitement...',
+    countChars: 'Caractères (avec espaces):',
+    countCharsNoSpace: 'Caractères (sans espaces):',
+    countWords: 'Mots:',
+    countLines: 'Lignes:',
+    exportTXT: '📄 TXT',
+    exportCSV: '📊 CSV',
+    exportPDF: '📑 PDF',
+    whyUseTitle: '✨ Pourquoi utiliser cet outil ?',
+    howUseTitle: '📖 Mode d\'emploi',
+    faqTitle: '❓ Questions fréquentes'
   },
   es: {
-    back: '🏠 Volver al inicio', paste: '📋 Pegar', example: '📄 Ejemplo', clear: '🗑️ Borrar',
-    exampleHint: '📋 Ejemplo: Haga clic aquí', copy: '📋 Copiar resultado', copied: '✅ ¡Copiado!',
-    inputLabel: '📝 Texto fuente', outputLabel: '✨ Resultado', placeholder: 'Ingrese su texto...',
-    resultPlaceholder: 'El resultado aparecerá aquí...', notFound: '🔍 Herramienta no encontrada', backHome: 'Volver al inicio',
-    similarTools: '🔗 También te puede interesar', loading: 'Procesando...',
-    countChars: 'Caracteres (con espacios):', countCharsNoSpace: 'Caracteres (sin espacios):',
-    countWords: 'Palabras:', countLines: 'Líneas:',
-    exportTXT: '📄 TXT', exportCSV: '📊 CSV', exportPDF: '📑 PDF'
+    back: '🏠 Volver al inicio',
+    paste: '📋 Pegar',
+    example: '📄 Ejemplo',
+    clear: '🗑️ Borrar',
+    exampleHint: '📋 Ejemplo: Haga clic aquí',
+    copy: '📋 Copiar resultado',
+    copied: '✅ ¡Copiado!',
+    inputLabel: '📝 Texto fuente',
+    outputLabel: '✨ Resultado',
+    placeholder: 'Ingrese su texto...',
+    resultPlaceholder: 'El resultado aparecerá aquí...',
+    notFound: '🔍 Herramienta no encontrada',
+    backHome: 'Volver al inicio',
+    similarTools: '🔗 También te puede interesar',
+    loading: 'Procesando...',
+    countChars: 'Caracteres (con espacios):',
+    countCharsNoSpace: 'Caracteres (sin espacios):',
+    countWords: 'Palabras:',
+    countLines: 'Líneas:',
+    exportTXT: '📄 TXT',
+    exportCSV: '📊 CSV',
+    exportPDF: '📑 PDF',
+    whyUseTitle: '✨ ¿Por qué usar esta herramienta?',
+    howUseTitle: '📖 Cómo usar',
+    faqTitle: '❓ Preguntas frecuentes'
   }
 };
 
 // ========== محتوى SEO متعدد اللغات (بدون أخطاء نحوية) ==========
 function getLocalizedContent(toolId: string, toolName: string, locale: string) {
-  // قواميس الترجمة للأقسام الثابتة
+  // قواميس الترجمة للأقسام الثابتة (النقاط فقط، العناوين أصبحت في pageTranslations)
   const whyUseTexts = {
     ar: [
       '⚡ نتائج فورية – اكتب وسترى النتيجة مباشرة',
@@ -143,7 +229,7 @@ function getLocalizedContent(toolId: string, toolName: string, locale: string) {
     es: `La herramienta **${toolName}** de ToolKit ProAI le permite procesar texto de forma fácil y rápida. Perfecto para escritores, desarrolladores y creadores de contenido. Úselo en línea gratis – sin necesidad de instalación.`
   };
   
-  // الأسئلة الشائعة (تم إصلاح الأخطاء في الفرنسية باستخدام علامات الاقتباس المزدوجة)
+  // الأسئلة الشائعة (تم إصلاح الأخطاء في الفرنسية باستخدام string concatenation)
   const faqMap: Record<string, any[]> = {
     ar: [
       { q: `ما هي أداة ${toolName}؟`, a: `أداة ${toolName} هي خدمة مجانية تتيح لك معالجة النصوص بسرعة وأمان.` },
@@ -176,12 +262,6 @@ function getLocalizedContent(toolId: string, toolName: string, locale: string) {
       { q: `¿Cuántos idiomas admite la herramienta?`, a: 'La herramienta admite 5 idiomas: árabe, inglés, alemán, francés, español.' }
     ]
   };
-  
-  // دالة مساعدة لوصف الأداة تلقائياً (اختيارية)
-  function toolDescriptionFallback(toolId: string): string {
-    // not used now, but kept for consistency
-    return 'process text';
-  }
   
   return {
     description: descriptionMap[locale] || descriptionMap.en,
@@ -255,6 +335,7 @@ export default function ToolClient({ params }: { params: { locale: string; toolI
   const toolName = getToolName();
   const toolDescriptionShort = getToolDescription();
   const seoContent = getLocalizedContent(toolId, toolName, locale);
+  const isRTL = locale === 'ar';
   
   const loadExample = () => setInput(tool.example);
   const handleCopy = async () => { await navigator.clipboard.writeText(output); setCopied(true); setTimeout(() => setCopied(false), 2000); };
@@ -318,7 +399,7 @@ export default function ToolClient({ params }: { params: { locale: string; toolI
             value={input} 
             onChange={(e) => setInput(e.target.value)} 
             placeholder={t.placeholder}
-            dir={locale === 'ar' ? 'rtl' : 'ltr'}
+            dir={isRTL ? 'rtl' : 'ltr'}
           />
           
           <div className="button-group">
@@ -348,7 +429,7 @@ export default function ToolClient({ params }: { params: { locale: string; toolI
               <span style={{ marginLeft: '1rem' }}>{t.loading}</span>
             </div>
           ) : (
-            <div className="result-box" dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+            <div className="result-box" dir={isRTL ? 'rtl' : 'ltr'}>
               {output || t.resultPlaceholder}
             </div>
           )}
@@ -368,22 +449,22 @@ export default function ToolClient({ params }: { params: { locale: string; toolI
         </div>
       </div>
       
-      {/* ========== المحتوى الوصفي المتعدد اللغات ========== */}
-      <div className="tool-card-single" style={{ marginTop: '1.5rem' }}>
+      {/* ========== المحتوى الوصفي المتعدد اللغات مع دعم RTL ========== */}
+      <div className="tool-card-single" style={{ marginTop: '1.5rem' }} dir={isRTL ? 'rtl' : 'ltr'}>
         <h2 style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>{toolName}</h2>
         <p style={{ lineHeight: '1.7', marginBottom: '1rem' }}>{seoContent.description}</p>
         
-        <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--accent)' }}>✨ Why Use {toolName}?</h3>
+        <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--accent)' }}>{t.whyUseTitle}</h3>
         <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginBottom: '1rem' }}>
           {seoContent.whyUse.map((item, idx) => <li key={idx}>{item}</li>)}
         </ul>
         
-        <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--accent)' }}>📖 How to Use</h3>
+        <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--accent)' }}>{t.howUseTitle}</h3>
         <ol style={{ listStyle: 'decimal', paddingLeft: '1.5rem', marginBottom: '1rem' }}>
           {seoContent.howUse.map((item, idx) => <li key={idx}>{item}</li>)}
         </ol>
         
-        <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--accent)' }}>❓ Frequently Asked Questions</h3>
+        <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--accent)' }}>{t.faqTitle}</h3>
         {seoContent.faq.map((item, idx) => (
           <div key={idx} style={{ marginBottom: '1rem' }}>
             <strong>{item.q}</strong>
