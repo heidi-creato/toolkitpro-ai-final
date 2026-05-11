@@ -146,14 +146,7 @@ const pageTranslations = {
 };
 
 // ========== ⭐⭐⭐ هنا تضيف النصوص المخصصة لكل أداة ⭐⭐⭐ ==========
-// أضف لكل أداة تريد تخصيصها كائناً يحتوي على التالي:
-// - description: النص الوصفي (سلسلة نصية)
-// - whyUse: مصفوفة من النقاط (كل نقطة سلسلة)
-// - howUse: مصفوفة من الخطوات
-// - faq: مصفوفة من كائنات { q, a }
-// يمكنك تكرار نفس الهيكل لكل لغة (ar, en, de, fr, es)
 
-```typescript
 const toolCustomContent: Record<string, Record<string, any>> = {
   // أداة "uppercase" (تحويل إلى أحرف كبيرة) - دعم 5 لغات
   'uppercase': {
@@ -270,8 +263,8 @@ const toolCustomContent: Record<string, Record<string, any>> = {
   }
 };
 
-export default toolCustomContent;
-```
+
+export default function ToolClient({ params }: { params: { locale: string; toolId: string } }) {
 
 // ========== دالة تجلب المحتوى المخصص أو العام ==========
 function getLocalizedContent(toolId: string, toolName: string, locale: string) {
