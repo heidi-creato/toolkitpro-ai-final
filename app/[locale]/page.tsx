@@ -7,35 +7,35 @@ import toolsData from '@/data/tools.json';
 // ترجمة كاملة - اللغة الإنجليزية هي الافتراضية
 const translations = {
   en: {
-    heroDesc: '✨ 28+ Professional tools for writers and content creators',
+    heroDesc: '✨ 37+ Professional tools for writers and content creators',
     primaryTitle: '🥇 Essential Tools - High Demand',
     secondaryTitle: '🥈 Medium Tools - Daily Use',
     decorativeTitle: '🎨 Decorative Tools - Creative',
     ads: '📢 Google AdSense Space'
   },
   ar: {
-    heroDesc: '✨ 28+ أداة احترافية للكتّاب وصناع المحتوى',
+    heroDesc: '✨ 37+ أداة احترافية للكتّاب وصناع المحتوى',
     primaryTitle: '🥇 أدوات أساسية - مطلوبة بشدة',
     secondaryTitle: '🥈 أدوات متوسطة - مفيدة يومياً',
     decorativeTitle: '🎨 أدوات زخرفية - للإبداع والتصميم',
     ads: '📢 مساحة إعلانات Google AdSense'
   },
   de: {
-    heroDesc: '✨ 28+ Professionelle Werkzeuge für Autoren',
+    heroDesc: '✨ 37+ Professionelle Werkzeuge für Autoren',
     primaryTitle: '🥇 Wesentliche Werkzeuge',
     secondaryTitle: '🥈 Mittelwerkzeuge',
     decorativeTitle: '🎨 Dekorative Werkzeuge',
     ads: '📢 Google AdSense Platz'
   },
   fr: {
-    heroDesc: '✨ 28+ Outils professionnels pour rédacteurs',
+    heroDesc: '✨ 37+ Outils professionnels pour rédacteurs',
     primaryTitle: '🥇 Outils essentiels',
     secondaryTitle: '🥈 Outils moyens',
     decorativeTitle: '🎨 Outils décoratifs',
     ads: '📢 Espace Google AdSense'
   },
   es: {
-    heroDesc: '✨ 28+ Herramientas profesionales para escritores',
+    heroDesc: '✨ 37+ Herramientas profesionales para escritores',
     primaryTitle: '🥇 Herramientas esenciales',
     secondaryTitle: '🥈 Herramientas medias',
     decorativeTitle: '🎨 Herramientas decorativas',
