@@ -7,35 +7,35 @@ import toolsData from '@/data/tools.json';
 // ترجمة كاملة - اللغة الإنجليزية هي الافتراضية
 const translations = {
   en: {
-    heroDesc: '✨ 37+ Smart tools: code formatters, text utilities, AI generators',
+    heroDesc: '✨ 40+ Smart tools: code formatters, text utilities, AI generators',
     primaryTitle: '🥇 Essential Tools - High Demand',
     secondaryTitle: '🥈 Medium Tools - Daily Use',
     decorativeTitle: '🎨 Decorative Tools - Creative',
     ads: '📢 Google AdSense Space'
   },
   ar: {
-    heroDesc: '✨ 37+ أدوات ذكية: منسقات الأكواد، أدوات النصوص، مولدات الذكاء الاصطناعي',
+    heroDesc: '✨ 40+ أدوات ذكية: منسقات الأكواد، أدوات النصوص، مولدات الذكاء الاصطناعي',
     primaryTitle: '🥇 أدوات أساسية - مطلوبة بشدة',
     secondaryTitle: '🥈 أدوات متوسطة - مفيدة يومياً',
     decorativeTitle: '🎨 أدوات زخرفية - للإبداع والتصميم',
     ads: '📢 مساحة إعلانات Google AdSense'
   },
   de: {
-    heroDesc: '✨ 37+ Intelligente Werkzeuge: Code-Formatierer, Textwerkzeuge, KI-Generatoren',
+    heroDesc: '✨ 40+ Intelligente Werkzeuge: Code-Formatierer, Textwerkzeuge, KI-Generatoren',
     primaryTitle: '🥇 Wesentliche Werkzeuge',
     secondaryTitle: '🥈 Mittelwerkzeuge',
     decorativeTitle: '🎨 Dekorative Werkzeuge',
     ads: '📢 Google AdSense Platz'
   },
   fr: {
-    heroDesc: '✨ 37+ Outils intelligents : formateurs de code, utilitaires de texte, générateurs d\'IA',
+    heroDesc: '✨ 40+ Outils intelligents : formateurs de code, utilitaires de texte, générateurs d\'IA',
     primaryTitle: '🥇 Outils essentiels',
     secondaryTitle: '🥈 Outils moyens',
     decorativeTitle: '🎨 Outils décoratifs',
     ads: '📢 Espace Google AdSense'
   },
   es: {
-    heroDesc: '✨ 37+ Herramientas profesionales para escritores',
+    heroDesc: '✨ 40+ Herramientas profesionales para escritores',
     primaryTitle: '🥇 Herramientas esenciales',
     secondaryTitle: '🥈 Herramientas medias',
     decorativeTitle: '🎨 Herramientas decorativas',

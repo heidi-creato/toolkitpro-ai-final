@@ -450,5 +450,50 @@
       "icon": "🔄",
       "example": "old text|new text"
     }
+    {
+      "id": "url-encoder",
+      "name": "URL Encoder/Decoder",
+      "nameAr": "ترميز وفك ترميز URL",
+      "nameDe": "URL-Kodierer/Dekodierer",
+      "nameFr": "Encodeur/Décodeur URL",
+      "nameEs": "Codificador/Decodificador URL",
+      "description": "ترميز وفك ترميز الروابط الخاصة بـ URL",
+      "descriptionEn": "Encode and decode URL strings",
+      "descriptionDe": "URL-Strings kodieren und dekodieren",
+      "descriptionFr": "Encoder et décoder les chaînes URL",
+      "descriptionEs": "Codificar y decodificar cadenas URL",
+      "icon": "🔗",
+      "example": "https://example.com/?name=test&value=hello world"
+    },
+    {
+      "id": "markdown-preview",
+      "name": "Markdown Preview",
+      "nameAr": "معاينة Markdown",
+      "nameDe": "Markdown-Vorschau",
+      "nameFr": "Aperçu Markdown",
+      "nameEs": "Vista previa Markdown",
+      "description": "كتابة ومعاينة نصوص Markdown مباشرة",
+      "descriptionEn": "Write and preview Markdown text instantly",
+      "descriptionDe": "Markdown-Text schreiben und sofort anzeigen",
+      "descriptionFr": "Écrire et prévisualiser du texte Markdown",
+      "descriptionEs": "Escribir y previsualizar texto Markdown",
+      "icon": "📝",
+      "example": "# مرحبا\n**نص عريض**\n- قائمة\n[رابط](https://example.com)"
+    },
+    {
+      "id": "uuid-generator",
+      "name": "UUID Generator",
+      "nameAr": "مولد UUID",
+      "nameDe": "UUID-Generator",
+      "nameFr": "Générateur UUID",
+      "nameEs": "Generador UUID",
+      "description": "توليد معرفات فريدة (UUID v4)",
+      "descriptionEn": "Generate unique identifiers (UUID v4)",
+      "descriptionDe": "Generieren Sie eindeutige Kennungen (UUID v4)",
+      "descriptionFr": "Générer des identifiants uniques (UUID v4)",
+      "descriptionEs": "Generar identificadores únicos (UUID v4)",
+      "icon": "🆔",
+      "example": "5"
+    }
   ]
 }

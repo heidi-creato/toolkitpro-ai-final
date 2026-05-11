@@ -270,6 +270,59 @@ export function transformText(toolId: string, text: string): string {
       const regex = new RegExp(search, 'g');
       return text.replace(regex, replacement || '');
     }
+    // URL Encoder/Decoder
+    case 'url-encoder': {
+      // إذا كان النص يحتوي على % فهو مشفر، نقوم بفك التشفير، وإلا نقوم بتشفيره
+      if (text.includes('%')) {
+        try {
+          return decodeURIComponent(text);
+        } catch {
+          return '❌ Invalid URL encoding';
+        }
+      } else {
+        return encodeURIComponent(text);
+      }
+    }
+
+    // Markdown Preview
+    case 'markdown-preview': {
+      // تحويل بسيط لعلامات Markdown إلى HTML (يمكن استخدام مكتبة لكن نكتفي ببعض التنسيقات الأساسية)
+      let html = text
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
+        .replace(/\*(.*)\*/gim, '<em>$1</em>')
+        .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank">$1</a>')
+        .replace(/^- (.*$)/gim, '<li>$1</li>')
+        .replace(/^\d+\. (.*$)/gim, '<li>$1</li>')
+        .replace(/\n/g, '<br>');
+      // تنظيف القوائم
+      html = html.replace(/<li>(.*?)<\/li>/g, '<li>$1</li>');
+      if (html.includes('<li>')) {
+        html = '<ul>' + html + '</ul>';
+      }
+      return html;
+    }
+
+    // UUID Generator
+    case 'uuid-generator': {
+      const count = parseInt(text) || 1;
+      const uuids: string[] = [];
+      for (let i = 0; i < Math.min(count, 20); i++) {
+        uuids.push(crypto.randomUUID ? crypto.randomUUID() : generateUUID());
+      }
+      return uuids.join('\n');
+      
+      // Fallback function for environments without crypto.randomUUID
+      function generateUUID() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          const r = Math.random() * 16 | 0;
+          const v = c === 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+        });
+      }
+    }
 
     default:
       return text;
