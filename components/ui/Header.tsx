@@ -194,8 +194,8 @@ export default function Header() {
           <Image 
             src="/images/logo-small.png" 
             alt="Logo" 
-            width={45}
-            height={19}
+            width={80}
+            height={34}
             priority
             className="logo-image"
             style={{ objectFit: 'contain' }}
