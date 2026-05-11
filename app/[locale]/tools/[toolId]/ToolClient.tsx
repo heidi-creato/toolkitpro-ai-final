@@ -145,12 +145,10 @@ const pageTranslations = {
   }
 };
 
-// ========== ⭐⭐⭐ هنا تضيف النصوص المخصصة لكل أداة ⭐⭐⭐ ==========
-
+// ========== ⭐⭐⭐ المحتوى المخصص لكل أداة (بدون تصدير منفصل) ⭐⭐⭐ ==========
 const toolCustomContent: Record<string, Record<string, any>> = {
   // أداة "uppercase" (تحويل إلى أحرف كبيرة) - دعم 5 لغات
   'uppercase': {
-    // العربية
     ar: {
       title: 'أداة تحويل إلى أحرف كبيرة (UPPERCASE)',
       description: '🌟 **أداة تحويل النص إلى أحرف كبيرة** من ToolKit ProAI – حول أي نص إلى حروف كبيرة (UPPERCASE) بضغطة زر. مثالية للعناوين البارزة، التنبيهات القوية، النصوص البرمجية، أو أي موقف تحتاج فيه إلى تكبير جميع الحروف.',
@@ -172,7 +170,6 @@ const toolCustomContent: Record<string, Record<string, any>> = {
         { q: 'هل أحتاج إلى إنشاء حساب؟', a: 'لا، الأداة مجانية بالكامل وبدون تسجيل دخول.' }
       ]
     },
-    // الإنجليزية
     en: {
       title: 'Uppercase Text Converter Tool',
       description: '🌟 **Uppercase Converter** by ToolKit ProAI – instantly transform any text to ALL CAPS (UPPERCASE). Perfect for headings, alerts, programming constants, or any situation requiring full capitalization.',
@@ -194,7 +191,6 @@ const toolCustomContent: Record<string, Record<string, any>> = {
         { q: 'Do I need an account?', a: 'No, the tool is completely free with no login required.' }
       ]
     },
-    // الألمانية (Deutsch)
     de: {
       title: 'Großbuchstaben-Konverter (Uppercase)',
       description: '🌟 **Großbuchstaben-Werkzeug** von ToolKit ProAI – wandelt jeden Text sofort in Großbuchstaben (UPPERCASE) um. Ideal für Überschriften, Warnungen, Programmierung oder formelle Dokumente.',
@@ -216,7 +212,6 @@ const toolCustomContent: Record<string, Record<string, any>> = {
         { q: 'Ist die Nutzung kostenlos?', a: 'Ja, völlig kostenlos ohne Anmeldung.' }
       ]
     },
-    // الفرنسية (Français)
     fr: {
       title: 'Convertisseur en majuscules (Uppercase)',
       description: '🌟 **Outil de conversion en majuscules** par ToolKit ProAI – transformez instantanément n’importe quel texte en MAJUSCULES. Idéal pour les titres, alertes, constantes en programmation ou textes officiels.',
@@ -238,7 +233,6 @@ const toolCustomContent: Record<string, Record<string, any>> = {
         { q: 'Dois-je créer un compte ?', a: 'Non, l’outil est entièrement gratuit et sans inscription.' }
       ]
     },
-    // الإسبانية (Español)
     es: {
       title: 'Convertidor a mayúsculas (Uppercase)',
       description: '🌟 **Herramienta de mayúsculas** de ToolKit ProAI – convierte cualquier texto a MAYÚSCULAS (UPPERCASE) al instante. Perfecto para títulos, alertas, constantes en programación o textos destacados.',
@@ -262,9 +256,6 @@ const toolCustomContent: Record<string, Record<string, any>> = {
     }
   }
 };
-
-
-export default function ToolClient({ params }: { params: { locale: string; toolId: string } }) {
 
 // ========== دالة تجلب المحتوى المخصص أو العام ==========
 function getLocalizedContent(toolId: string, toolName: string, locale: string) {
@@ -380,7 +371,9 @@ function getLocalizedContent(toolId: string, toolName: string, locale: string) {
   };
 
   return {
-    description: (locale === 'ar' ? `أداة **${toolName}** من ToolKit ProAI تسمح لك بمعالجة النصوص بسهولة وسرعة. مثالية للكتّاب والمطورين وصناع المحتوى. استخدمها أونلاين مجاناً – بدون تثبيت.` : `The **${toolName}** tool from ToolKit ProAI lets you process text easily and quickly. Perfect for writers, developers, and content creators. Use it online for free — no installation required.`),
+    description: (locale === 'ar' 
+      ? `أداة **${toolName}** من ToolKit ProAI تسمح لك بمعالجة النصوص بسهولة وسرعة. مثالية للكتّاب والمطورين وصناع المحتوى. استخدمها أونلاين مجاناً – بدون تثبيت.` 
+      : `The **${toolName}** tool from ToolKit ProAI lets you process text easily and quickly. Perfect for writers, developers, and content creators. Use it online for free — no installation required.`),
     whyUse: whyUseGeneral[locale as keyof typeof whyUseGeneral] || whyUseGeneral.en,
     howUse: howUseGeneral[locale as keyof typeof howUseGeneral] || howUseGeneral.en,
     faq: faqGeneral[locale as keyof typeof faqGeneral] || faqGeneral.en
@@ -572,16 +565,16 @@ export default function ToolClient({ params }: { params: { locale: string; toolI
         
         <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--accent)' }}>{t.whyUseTitle}</h3>
         <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem', marginBottom: '1rem' }}>
-          {seoContent.whyUse.map((item, idx) => <li key={idx}>{item}</li>)}
+          {seoContent.whyUse.map((item: string, idx: number) => <li key={idx}>{item}</li>)}
         </ul>
         
         <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--accent)' }}>{t.howUseTitle}</h3>
         <ol style={{ listStyle: 'decimal', paddingLeft: '1.5rem', marginBottom: '1rem' }}>
-          {seoContent.howUse.map((item, idx) => <li key={idx}>{item}</li>)}
+          {seoContent.howUse.map((item: string, idx: number) => <li key={idx}>{item}</li>)}
         </ol>
         
         <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--accent)' }}>{t.faqTitle}</h3>
-        {seoContent.faq.map((item, idx) => (
+        {seoContent.faq.map((item: { q: string; a: string }, idx: number) => (
           <div key={idx} style={{ marginBottom: '1rem' }}>
             <strong>{item.q}</strong>
             <p style={{ marginTop: '0.25rem', color: 'var(--text-secondary)' }}>{item.a}</p>
