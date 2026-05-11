@@ -31,7 +31,6 @@ const pageTranslations = {
     exportTXT: '📄 TXT',
     exportCSV: '📊 CSV',
     exportPDF: '📑 PDF',
-    // العناوين الجديدة
     whyUseTitle: '✨ لماذا تستخدم هذه الأداة؟',
     howUseTitle: '📖 كيفية الاستخدام',
     faqTitle: '❓ الأسئلة الشائعة'
@@ -146,10 +145,149 @@ const pageTranslations = {
   }
 };
 
-// ========== محتوى SEO متعدد اللغات (بدون أخطاء نحوية) ==========
+// ========== ⭐⭐⭐ هنا تضيف النصوص المخصصة لكل أداة ⭐⭐⭐ ==========
+// أضف لكل أداة تريد تخصيصها كائناً يحتوي على التالي:
+// - description: النص الوصفي (سلسلة نصية)
+// - whyUse: مصفوفة من النقاط (كل نقطة سلسلة)
+// - howUse: مصفوفة من الخطوات
+// - faq: مصفوفة من كائنات { q, a }
+// يمكنك تكرار نفس الهيكل لكل لغة (ar, en, de, fr, es)
+
+```typescript
+const toolCustomContent: Record<string, Record<string, any>> = {
+  // أداة "uppercase" (تحويل إلى أحرف كبيرة) - دعم 5 لغات
+  'uppercase': {
+    // العربية
+    ar: {
+      title: 'أداة تحويل إلى أحرف كبيرة (UPPERCASE)',
+      description: '🌟 **أداة تحويل النص إلى أحرف كبيرة** من ToolKit ProAI – حول أي نص إلى حروف كبيرة (UPPERCASE) بضغطة زر. مثالية للعناوين البارزة، التنبيهات القوية، النصوص البرمجية، أو أي موقف تحتاج فيه إلى تكبير جميع الحروف.',
+      whyUse: [
+        '⚡ تحويل فوري بنقرة واحدة – بدون تعقيد',
+        '🔒 آمن تماماً – لا نُخزن نصوصك أبداً',
+        '🌍 يدعم اللغة العربية والإنجليزية والفرنسية والألمانية والإسبانية',
+        '📱 يعمل على جميع الأجهزة (هواتف، أجهزة لوحية، حواسيب)',
+        '💾 انسخ النتيجة مباشرة أو حمّلها كملف نصي (.txt)'
+      ],
+      howUse: [
+        '1. اكتب أو الصق النص في الحقل العلوي',
+        '2. اضغط على زر "تحويل" (Convert)',
+        '3. استخدم زر "نسخ" لنسخ النتيجة، أو "تحميل" لحفظها كملف نصي'
+      ],
+      faq: [
+        { q: 'ما الفرق بين هذه الأداة وأداة "capitalize"؟', a: 'أداة "uppercase" تحول كل الحروف إلى كبيرة (مثال: hello → HELLO)، بينما "capitalize" تجعل الحرف الأول كبيراً فقط.' },
+        { q: 'هل تدعم الأحرف الخاصة والأرقام؟', a: 'نعم، تبقى الأرقام والرموز كما هي دون تغيير، فقط الحروف الأبجدية تُحوَّل.' },
+        { q: 'هل أحتاج إلى إنشاء حساب؟', a: 'لا، الأداة مجانية بالكامل وبدون تسجيل دخول.' }
+      ]
+    },
+    // الإنجليزية
+    en: {
+      title: 'Uppercase Text Converter Tool',
+      description: '🌟 **Uppercase Converter** by ToolKit ProAI – instantly transform any text to ALL CAPS (UPPERCASE). Perfect for headings, alerts, programming constants, or any situation requiring full capitalization.',
+      whyUse: [
+        '⚡ One-click instant conversion',
+        '🔒 100% secure – no text is ever stored',
+        '🌍 Supports 5 languages: English, Arabic, French, German, Spanish',
+        '📱 Works flawlessly on all devices',
+        '💾 Copy to clipboard or download as .txt file'
+      ],
+      howUse: [
+        '1. Type or paste your text into the input box',
+        '2. Click the "Convert" button',
+        '3. Click "Copy" to copy the result, or "Download" to save as a text file'
+      ],
+      faq: [
+        { q: 'What is the difference between Uppercase and Capitalize?', a: 'Uppercase converts every letter to capital (e.g., hello → HELLO). Capitalize only capitalizes the first letter of each word.' },
+        { q: 'Does it handle special characters and numbers?', a: 'Yes, numbers and symbols remain unchanged; only alphabet letters are converted.' },
+        { q: 'Do I need an account?', a: 'No, the tool is completely free with no login required.' }
+      ]
+    },
+    // الألمانية (Deutsch)
+    de: {
+      title: 'Großbuchstaben-Konverter (Uppercase)',
+      description: '🌟 **Großbuchstaben-Werkzeug** von ToolKit ProAI – wandelt jeden Text sofort in Großbuchstaben (UPPERCASE) um. Ideal für Überschriften, Warnungen, Programmierung oder formelle Dokumente.',
+      whyUse: [
+        '⚡ Sofortige Umwandlung mit einem Klick',
+        '🔒 100% sicher – keine Textspeicherung',
+        '🌍 Unterstützt 5 Sprachen: Deutsch, Englisch, Französisch, Spanisch, Arabisch',
+        '📱 Funktioniert auf allen Geräten',
+        '💾 Ergebnis kopieren oder als .txt herunterladen'
+      ],
+      howUse: [
+        '1. Text in das obere Feld eingeben oder einfügen',
+        '2. Klicken Sie auf die Schaltfläche "Umwandeln"',
+        '3. Kopieren Sie das Ergebnis oder laden Sie es als Textdatei herunter'
+      ],
+      faq: [
+        { q: 'Was ist der Unterschied zwischen Uppercase und Capitalize?', a: 'Uppercase macht alle Buchstaben groß (z. B. hallo → HALLO). Capitalize macht nur den ersten Buchstaben jedes Wortes groß.' },
+        { q: 'Werden Umlaute (ä, ö, ü) richtig verarbeitet?', a: 'Ja, ä wird zu Ä, ö zu Ö, ü zu Ü und ß bleibt ß (da es keine Großform hat, wird es zu SS in manchen Kontexten – aber hier bleibt es ß gemäß Standard).' },
+        { q: 'Ist die Nutzung kostenlos?', a: 'Ja, völlig kostenlos ohne Anmeldung.' }
+      ]
+    },
+    // الفرنسية (Français)
+    fr: {
+      title: 'Convertisseur en majuscules (Uppercase)',
+      description: '🌟 **Outil de conversion en majuscules** par ToolKit ProAI – transformez instantanément n’importe quel texte en MAJUSCULES. Idéal pour les titres, alertes, constantes en programmation ou textes officiels.',
+      whyUse: [
+        '⚡ Conversion instantanée en un clic',
+        '🔒 100% sécurisé – aucun texte n’est stocké',
+        '🌍 Prend en charge 5 langues : français, anglais, allemand, espagnol, arabe',
+        '📱 Fonctionne sur tous les appareils',
+        '💾 Copier ou télécharger le résultat au format .txt'
+      ],
+      howUse: [
+        '1. Saisissez ou collez votre texte dans le champ supérieur',
+        '2. Cliquez sur le bouton "Convertir"',
+        '3. Copiez le résultat ou téléchargez-le en tant que fichier texte'
+      ],
+      faq: [
+        { q: 'Différence entre "Uppercase" et "Capitalize" ?', a: 'Uppercase met tout en majuscules (ex. bonjour → BONJOUR). Capitalize met seulement la première lettre de chaque mot en majuscule.' },
+        { q: 'Gère-t-il les caractères accentués (é, è, ç) ?', a: 'Oui, é devient É, è devient È, ç devient Ç, etc. Tous les accents sont conservés.' },
+        { q: 'Dois-je créer un compte ?', a: 'Non, l’outil est entièrement gratuit et sans inscription.' }
+      ]
+    },
+    // الإسبانية (Español)
+    es: {
+      title: 'Convertidor a mayúsculas (Uppercase)',
+      description: '🌟 **Herramienta de mayúsculas** de ToolKit ProAI – convierte cualquier texto a MAYÚSCULAS (UPPERCASE) al instante. Perfecto para títulos, alertas, constantes en programación o textos destacados.',
+      whyUse: [
+        '⚡ Conversión instantánea con un clic',
+        '🔒 100% seguro – no se almacena ningún texto',
+        '🌍 Soporta 5 idiomas: español, inglés, alemán, francés, árabe',
+        '📱 Funciona en todos los dispositivos',
+        '💾 Copiar o descargar el resultado como archivo .txt'
+      ],
+      howUse: [
+        '1. Escribe o pega tu texto en el cuadro superior',
+        '2. Haz clic en el botón "Convertir"',
+        '3. Copia el resultado o descárgalo como archivo de texto'
+      ],
+      faq: [
+        { q: '¿Diferencia entre "Uppercase" y "Capitalize"?', a: 'Uppercase convierte todas las letras a mayúsculas (ej. hola → HOLA). Capitalize solo pone en mayúscula la primera letra de cada palabra.' },
+        { q: '¿Maneja correctamente las letras con tilde (á, é, í, ó, ú, ü, ñ)?', a: 'Sí, á → Á, é → É, í → Í, ó → Ó, ú → Ú, ü → Ü, ñ → Ñ, respetando las reglas del español.' },
+        { q: '¿Es gratuito?', a: 'Sí, completamente gratuito y sin necesidad de registro.' }
+      ]
+    }
+  }
+};
+
+export default toolCustomContent;
+```
+
+// ========== دالة تجلب المحتوى المخصص أو العام ==========
 function getLocalizedContent(toolId: string, toolName: string, locale: string) {
-  // قواميس الترجمة للأقسام الثابتة (النقاط فقط، العناوين أصبحت في pageTranslations)
-  const whyUseTexts = {
+  // محاولة الحصول على المحتوى المخصص لهذه الأداة وهذه اللغة
+  const custom = toolCustomContent[toolId]?.[locale];
+  if (custom) {
+    return {
+      description: custom.description,
+      whyUse: custom.whyUse,
+      howUse: custom.howUse,
+      faq: custom.faq
+    };
+  }
+
+  // --- محتوى عام احتياطي (يظهر إذا لم تجد إدخالاً مخصصاً) ---
+  const whyUseGeneral = {
     ar: [
       '⚡ نتائج فورية – اكتب وسترى النتيجة مباشرة',
       '🔒 آمن 100% – لا تترك بياناتك المتصفح',
@@ -167,27 +305,26 @@ function getLocalizedContent(toolId: string, toolName: string, locale: string) {
     de: [
       '⚡ Sofortige Ergebnisse – Eingabe und Ausgabe erscheint sofort',
       '🔒 100% sicher – keine Daten verlassen Ihren Browser',
-      '🌍 Unterstützt 5 Sprachen (Arabisch, Englisch, Deutsch, Französisch, Spanisch)',
-      '📱 Vollständig responsiv – funktioniert auf Handy, Tablet, PC',
-      '💾 Ergebnisse kopieren oder als Datei herunterladen'
+      '🌍 Unterstützt 5 Sprachen',
+      '📱 Vollständig responsiv',
+      '💾 Ergebnisse kopieren oder herunterladen'
     ],
     fr: [
-      '⚡ Résultats instantanés – tapez et voyez le résultat immédiatement',
-      '🔒 100% sécurisé – aucune donnée ne quitte votre navigateur',
-      '🌍 Prend en charge 5 langues (arabe, anglais, allemand, français, espagnol)',
-      '📱 Entièrement responsive – fonctionne sur mobile, tablette, ordinateur',
-      '💾 Copiez ou téléchargez le résultat en un clic'
+      '⚡ Résultats instantanés',
+      '🔒 100% sécurisé',
+      '🌍 Prend en charge 5 langues',
+      '📱 Entièrement responsive',
+      '💾 Copiez ou téléchargez le résultat'
     ],
     es: [
-      '⚡ Resultados instantáneos – escribe y ve el resultado al instante',
-      '🔒 100% seguro – los datos no salen de tu navegador',
-      '🌍 Soporta 5 idiomas (árabe, inglés, alemán, francés, español)',
-      '📱 Totalmente responsive – funciona en móvil, tableta, ordenador',
-      '💾 Copia o descarga el resultado con un clic'
+      '⚡ Resultados instantáneos',
+      '🔒 100% seguro',
+      '🌍 Soporta 5 idiomas',
+      '📱 Totalmente responsive',
+      '💾 Copia o descarga el resultado'
     ]
   };
-  
-  const howUseTexts = {
+  const howUseGeneral = {
     ar: [
       'أدخل النص في المربع العلوي',
       'ستظهر النتيجة مباشرة في المربع السفلي',
@@ -203,71 +340,57 @@ function getLocalizedContent(toolId: string, toolName: string, locale: string) {
     de: [
       'Geben Sie Ihren Text in das Eingabefeld ein',
       'Das Ergebnis erscheint sofort im Ausgabefeld',
-      'Klicken Sie auf "Kopieren", um das Ergebnis zu kopieren, oder auf "Herunterladen", um es als TXT/CSV/PDF zu speichern',
-      'Verwenden Sie die Schaltfläche "Beispiel", um einen Beispieltext auszuprobieren'
+      'Klicken Sie auf "Kopieren" oder "Herunterladen"',
+      'Nutzen Sie die Schaltfläche "Beispiel"'
     ],
     fr: [
       'Entrez votre texte dans la zone de saisie',
-      'Le résultat apparaît instantanément dans la zone de sortie',
-      'Cliquez sur "Copier" pour copier le résultat ou sur "Télécharger" pour l\'enregistrer en TXT/CSV/PDF',
-      'Utilisez le bouton "Exemple" pour essayer un texte exemple'
+      'Le résultat apparaît instantanément',
+      'Cliquez sur "Copier" ou "Télécharger"',
+      'Utilisez le bouton "Exemple"'
     ],
     es: [
       'Ingrese su texto en el cuadro de entrada',
-      'El resultado aparece instantáneamente en el cuadro de salida',
-      'Haga clic en "Copiar" para copiar el resultado o en "Descargar" para guardarlo como TXT/CSV/PDF',
-      'Use el botón "Ejemplo" para probar un texto de ejemplo'
+      'El resultado aparece instantáneamente',
+      'Haga clic en "Copiar" o "Descargar"',
+      'Use el botón "Ejemplo"'
     ]
   };
-  
-  // نص وصفي ديناميكي باللغات الخمس
-  const descriptionMap: Record<string, string> = {
-    ar: `أداة **${toolName}** من ToolKit ProAI تسمح لك بمعالجة النصوص بسهولة وسرعة. مثالية للكتّاب والمطورين وصناع المحتوى. استخدمها أونلاين مجاناً – بدون تثبيت.`,
-    en: `The **${toolName}** tool from ToolKit ProAI lets you process text easily and quickly. Perfect for writers, developers, and content creators. Use it online for free — no installation required.`,
-    de: `Das **${toolName}** Tool von ToolKit ProAI ermöglicht es Ihnen, Texte einfach und schnell zu verarbeiten. Ideal für Autoren, Entwickler und Content-Ersteller. Nutzen Sie es online kostenlos – keine Installation erforderlich.`,
-    fr: `L'outil **${toolName}** de ToolKit ProAI vous permet de traiter du texte facilement et rapidement. Parfait pour les rédacteurs, les développeurs et les créateurs de contenu. Utilisez-le en ligne gratuitement – aucune installation requise.`,
-    es: `La herramienta **${toolName}** de ToolKit ProAI le permite procesar texto de forma fácil y rápida. Perfecto para escritores, desarrolladores y creadores de contenido. Úselo en línea gratis – sin necesidad de instalación.`
-  };
-  
-  // الأسئلة الشائعة (تم إصلاح الأخطاء في الفرنسية باستخدام string concatenation)
-  const faqMap: Record<string, any[]> = {
+  const faqGeneral = {
     ar: [
       { q: `ما هي أداة ${toolName}؟`, a: `أداة ${toolName} هي خدمة مجانية تتيح لك معالجة النصوص بسرعة وأمان.` },
-      { q: `هل أداة ${toolName} مجانية؟`, a: 'نعم، جميع أدوات ToolKit ProAI مجانية تماماً ولا تحتاج إلى تسجيل.' },
-      { q: `هل بياناتي آمنة عند استخدام ${toolName}؟`, a: 'نعم، جميع المعالجات تتم في متصفحك، ولا يتم تخزين أي من بياناتك على خوادمنا.' },
+      { q: `هل أداة ${toolName} مجانية؟`, a: 'نعم، جميع أدوات ToolKit ProAI مجانية ولا تحتاج إلى تسجيل.' },
+      { q: `هل بياناتي آمنة عند استخدام ${toolName}؟`, a: 'نعم، جميع المعالجات تتم في متصفحك، ولا نخزن ملفاتك.' },
       { q: `كم عدد اللغات التي تدعمها الأداة؟`, a: 'تدعم الأداة 5 لغات: العربية، الإنجليزية، الألمانية، الفرنسية، الإسبانية.' }
     ],
     en: [
       { q: `What is the ${toolName} tool?`, a: `The ${toolName} tool is a free online service that lets you process text quickly and securely.` },
-      { q: `Is the ${toolName} tool free?`, a: 'Yes, all ToolKit ProAI tools are completely free and require no registration.' },
-      { q: `Is my data safe when using ${toolName}?`, a: 'Yes, all processing happens in your browser, and we do not store any of your data on our servers.' },
-      { q: `How many languages does the tool support?`, a: 'The tool supports 5 languages: Arabic, English, German, French, Spanish.' }
+      { q: `Is this tool free?`, a: 'Yes, all tools are completely free with no sign-up required.' },
+      { q: `Is my data safe?`, a: 'All processing happens in your browser; we never store your data.' },
+      { q: `How many languages does it support?`, a: 'It supports 5 languages: Arabic, English, German, French, Spanish.' }
     ],
     de: [
-      { q: `Was ist das ${toolName}-Tool?`, a: `Das ${toolName}-Tool ist ein kostenloser Online-Dienst, mit dem Sie Texte schnell und sicher verarbeiten können.` },
-      { q: `Ist das ${toolName}-Tool kostenlos?`, a: 'Ja, alle ToolKit ProAI-Tools sind völlig kostenlos und erfordern keine Registrierung.' },
-      { q: `Sind meine Daten bei der Verwendung von ${toolName} sicher?`, a: 'Ja, die gesamte Verarbeitung findet in Ihrem Browser statt, und wir speichern keine Ihrer Daten auf unseren Servern.' },
-      { q: `Wie viele Sprachen unterstützt das Tool?`, a: 'Das Tool unterstützt 5 Sprachen: Arabisch, Englisch, Deutsch, Französisch, Spanisch.' }
+      { q: `Was ist das ${toolName}-Tool?`, a: `Das Tool ist ein kostenloser Online-Dienst zur Textverarbeitung.` },
+      { q: `Ist es kostenlos?`, a: 'Ja, völlig kostenlos.' },
+      { q: `Sind meine Daten sicher?`, a: 'Ja, die Verarbeitung erfolgt im Browser.' }
     ],
     fr: [
-      { q: "Qu'est-ce que l'outil " + toolName + " ?", a: "L'outil " + toolName + " est un service en ligne gratuit qui vous permet de traiter du texte rapidement et en toute sécurité." },
-      { q: "L'outil " + toolName + " est-il gratuit ?", a: "Oui, tous les outils ToolKit ProAI sont entièrement gratuits et ne nécessitent aucune inscription." },
-      { q: "Mes données sont-elles en sécurité lorsque j'utilise " + toolName + " ?", a: "Oui, tout le traitement se fait dans votre navigateur et nous ne stockons aucune de vos données sur nos serveurs." },
-      { q: "Combien de langues l'outil prend-il en charge ?", a: "L'outil prend en charge 5 langues : arabe, anglais, allemand, français, espagnol." }
+      { q: `Qu'est-ce que l'outil ${toolName} ?`, a: `C'est un service gratuit pour traiter du texte.` },
+      { q: `Est-ce gratuit ?`, a: 'Oui, entièrement gratuit.' },
+      { q: `Mes données sont-elles sécurisées ?`, a: 'Oui, le traitement se fait dans votre navigateur.' }
     ],
     es: [
-      { q: `¿Qué es la herramienta ${toolName}?`, a: `La herramienta ${toolName} es un servicio gratuito en línea que le permite procesar texto de forma rápida y segura.` },
-      { q: `¿Es gratuita la herramienta ${toolName}?`, a: 'Sí, todas las herramientas de ToolKit ProAI son completamente gratuitas y no requieren registro.' },
-      { q: `¿Mis datos están seguros al usar ${toolName}?`, a: 'Sí, todo el procesamiento ocurre en su navegador y no almacenamos ninguno de sus datos en nuestros servidores.' },
-      { q: `¿Cuántos idiomas admite la herramienta?`, a: 'La herramienta admite 5 idiomas: árabe, inglés, alemán, francés, español.' }
+      { q: `¿Qué es la herramienta ${toolName}?`, a: `Es un servicio gratuito para procesar texto.` },
+      { q: `¿Es gratis?`, a: 'Sí, completamente gratis.' },
+      { q: `¿Mis datos están seguros?`, a: 'Sí, el procesamiento ocurre en su navegador.' }
     ]
   };
-  
+
   return {
-    description: descriptionMap[locale] || descriptionMap.en,
-    whyUse: whyUseTexts[locale as keyof typeof whyUseTexts] || whyUseTexts.en,
-    howUse: howUseTexts[locale as keyof typeof howUseTexts] || howUseTexts.en,
-    faq: faqMap[locale as keyof typeof faqMap] || faqMap.en
+    description: (locale === 'ar' ? `أداة **${toolName}** من ToolKit ProAI تسمح لك بمعالجة النصوص بسهولة وسرعة. مثالية للكتّاب والمطورين وصناع المحتوى. استخدمها أونلاين مجاناً – بدون تثبيت.` : `The **${toolName}** tool from ToolKit ProAI lets you process text easily and quickly. Perfect for writers, developers, and content creators. Use it online for free — no installation required.`),
+    whyUse: whyUseGeneral[locale as keyof typeof whyUseGeneral] || whyUseGeneral.en,
+    howUse: howUseGeneral[locale as keyof typeof howUseGeneral] || howUseGeneral.en,
+    faq: faqGeneral[locale as keyof typeof faqGeneral] || faqGeneral.en
   };
 }
 
@@ -449,7 +572,7 @@ export default function ToolClient({ params }: { params: { locale: string; toolI
         </div>
       </div>
       
-      {/* ========== المحتوى الوصفي المتعدد اللغات مع دعم RTL ========== */}
+      {/* ========== المحتوى الوصفي المتعدد اللغات (مخصص أو عام) ========== */}
       <div className="tool-card-single" style={{ marginTop: '1.5rem' }} dir={isRTL ? 'rtl' : 'ltr'}>
         <h2 style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>{toolName}</h2>
         <p style={{ lineHeight: '1.7', marginBottom: '1rem' }}>{seoContent.description}</p>
