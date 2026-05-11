@@ -7,28 +7,28 @@ import toolsData from '@/data/tools.json';
 // ترجمة كاملة - اللغة الإنجليزية هي الافتراضية
 const translations = {
   en: {
-    heroDesc: '✨ 37+ Professional tools for writers and content creators',
+    heroDesc: '✨ 37+ Smart tools: code formatters, text utilities, AI generators',
     primaryTitle: '🥇 Essential Tools - High Demand',
     secondaryTitle: '🥈 Medium Tools - Daily Use',
     decorativeTitle: '🎨 Decorative Tools - Creative',
     ads: '📢 Google AdSense Space'
   },
   ar: {
-    heroDesc: '✨ 37+ أداة احترافية للكتّاب وصناع المحتوى',
+    heroDesc: '✨ 37+ أدوات ذكية: منسقات الأكواد، أدوات النصوص، مولدات الذكاء الاصطناعي',
     primaryTitle: '🥇 أدوات أساسية - مطلوبة بشدة',
     secondaryTitle: '🥈 أدوات متوسطة - مفيدة يومياً',
     decorativeTitle: '🎨 أدوات زخرفية - للإبداع والتصميم',
     ads: '📢 مساحة إعلانات Google AdSense'
   },
   de: {
-    heroDesc: '✨ 37+ Professionelle Werkzeuge für Autoren',
+    heroDesc: '✨ 37+ Intelligente Werkzeuge: Code-Formatierer, Textwerkzeuge, KI-Generatoren',
     primaryTitle: '🥇 Wesentliche Werkzeuge',
     secondaryTitle: '🥈 Mittelwerkzeuge',
     decorativeTitle: '🎨 Dekorative Werkzeuge',
     ads: '📢 Google AdSense Platz'
   },
   fr: {
-    heroDesc: '✨ 37+ Outils professionnels pour rédacteurs',
+    heroDesc: '✨ 37+ Outils intelligents : formateurs de code, utilitaires de texte, générateurs d\'IA',
     primaryTitle: '🥇 Outils essentiels',
     secondaryTitle: '🥈 Outils moyens',
     decorativeTitle: '🎨 Outils décoratifs',
