@@ -201,7 +201,7 @@ export function transformText(toolId: string, text: string): string {
       return result;
     }
 
-    // ========== الأدوات الجديدة ==========
+    // ========== الأدوات الجديدة (مع أقواس) ==========
     case 'password-generator': {
       const length = parseInt(text) || 12;
       const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789!@#$%^&*()_+';
@@ -250,7 +250,7 @@ export function transformText(toolId: string, text: string): string {
     }
 
     case 'md5-generator': {
-      // ملاحظة: هذه ليست MD5 حقيقية. للاستخدام الفعلي، قم بتثبيت مكتبة md5.
+      // Simple simulation, not real MD5. For production, use a proper library.
       let hash = 0;
       for (let i = 0; i < text.length; i++) {
         const char = text.charCodeAt(i);
