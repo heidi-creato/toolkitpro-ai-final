@@ -6,136 +6,63 @@ import Link from 'next/link';
 import toolsData from '@/data/tools.json';
 import { transformText } from '@/lib/tools/transformers';
 
-// ========== ترجمة واجهة الأداة (الأزرار والتسميات) ==========
+// ========== ترجمة واجهة الأداة ==========
 const pageTranslations = {
   ar: {
-    back: '🏠 العودة للرئيسية',
-    paste: '📋 لصق',
-    example: '📄 مثال',
-    clear: '🗑️ مسح',
-    exampleHint: '📋 مثال: اضغط لاستخدام النص التجريبي',
-    copy: '📋 نسخ النتيجة',
-    copied: '✅ تم النسخ!',
-    inputLabel: '📝 النص المصدر',
-    outputLabel: '✨ النتيجة',
-    placeholder: 'أدخل النص هنا...',
-    resultPlaceholder: 'ستظهر النتيجة هنا...',
-    notFound: '🔍 الأداة غير موجودة',
-    backHome: 'العودة للرئيسية',
-    similarTools: '🔗 أدوات قد تهمك أيضاً',
-    loading: 'جاري المعالجة...',
-    countChars: 'عدد الأحرف (مع المسافات):',
-    countCharsNoSpace: 'عدد الأحرف (بدون مسافات):',
-    countWords: 'عدد الكلمات:',
-    countLines: 'عدد الأسطر:',
-    exportTXT: '📄 TXT',
-    exportCSV: '📊 CSV',
-    exportPDF: '📑 PDF'
+    back: '🏠 العودة للرئيسية', paste: '📋 لصق', example: '📄 مثال', clear: '🗑️ مسح',
+    exampleHint: '📋 مثال: اضغط لاستخدام النص التجريبي', copy: '📋 نسخ النتيجة', copied: '✅ تم النسخ!',
+    inputLabel: '📝 النص المصدر', outputLabel: '✨ النتيجة', placeholder: 'أدخل النص هنا...',
+    resultPlaceholder: 'ستظهر النتيجة هنا...', notFound: '🔍 الأداة غير موجودة', backHome: 'العودة للرئيسية',
+    similarTools: '🔗 أدوات قد تهمك أيضاً', loading: 'جاري المعالجة...',
+    countChars: 'عدد الأحرف (مع المسافات):', countCharsNoSpace: 'عدد الأحرف (بدون مسافات):',
+    countWords: 'عدد الكلمات:', countLines: 'عدد الأسطر:',
+    exportTXT: '📄 TXT', exportCSV: '📊 CSV', exportPDF: '📑 PDF'
   },
   en: {
-    back: '🏠 Back to Home',
-    paste: '📋 Paste',
-    example: '📄 Example',
-    clear: '🗑️ Clear',
-    exampleHint: '📋 Example: Click to use sample text',
-    copy: '📋 Copy Result',
-    copied: '✅ Copied!',
-    inputLabel: '📝 Source Text',
-    outputLabel: '✨ Result',
-    placeholder: 'Enter your text here...',
-    resultPlaceholder: 'Result will appear here...',
-    notFound: '🔍 Tool not found',
-    backHome: 'Back to Home',
-    similarTools: '🔗 You might also like',
-    loading: 'Processing...',
-    countChars: 'Characters (with spaces):',
-    countCharsNoSpace: 'Characters (no spaces):',
-    countWords: 'Words:',
-    countLines: 'Lines:',
-    exportTXT: '📄 TXT',
-    exportCSV: '📊 CSV',
-    exportPDF: '📑 PDF'
+    back: '🏠 Back to Home', paste: '📋 Paste', example: '📄 Example', clear: '🗑️ Clear',
+    exampleHint: '📋 Example: Click to use sample text', copy: '📋 Copy Result', copied: '✅ Copied!',
+    inputLabel: '📝 Source Text', outputLabel: '✨ Result', placeholder: 'Enter your text here...',
+    resultPlaceholder: 'Result will appear here...', notFound: '🔍 Tool not found', backHome: 'Back to Home',
+    similarTools: '🔗 You might also like', loading: 'Processing...',
+    countChars: 'Characters (with spaces):', countCharsNoSpace: 'Characters (no spaces):',
+    countWords: 'Words:', countLines: 'Lines:',
+    exportTXT: '📄 TXT', exportCSV: '📊 CSV', exportPDF: '📑 PDF'
   },
   de: {
-    back: '🏠 Zurück zur Startseite',
-    paste: '📋 Einfügen',
-    example: '📄 Beispiel',
-    clear: '🗑️ Löschen',
-    exampleHint: '📋 Beispiel: Klicken Sie hier',
-    copy: '📋 Ergebnis kopieren',
-    copied: '✅ Kopiert!',
-    inputLabel: '📝 Quelltext',
-    outputLabel: '✨ Ergebnis',
-    placeholder: 'Text hier eingeben...',
-    resultPlaceholder: 'Ergebnis wird hier angezeigt...',
-    notFound: '🔍 Werkzeug nicht gefunden',
-    backHome: 'Zurück zur Startseite',
-    similarTools: '🔗 Das könnte Ihnen auch gefallen',
-    loading: 'Verarbeitung...',
-    countChars: 'Zeichen (mit Leerzeichen):',
-    countCharsNoSpace: 'Zeichen (ohne Leerzeichen):',
-    countWords: 'Wörter:',
-    countLines: 'Zeilen:',
-    exportTXT: '📄 TXT',
-    exportCSV: '📊 CSV',
-    exportPDF: '📑 PDF'
+    back: '🏠 Zurück zur Startseite', paste: '📋 Einfügen', example: '📄 Beispiel', clear: '🗑️ Löschen',
+    exampleHint: '📋 Beispiel: Klicken Sie hier', copy: '📋 Ergebnis kopieren', copied: '✅ Kopiert!',
+    inputLabel: '📝 Quelltext', outputLabel: '✨ Ergebnis', placeholder: 'Text hier eingeben...',
+    resultPlaceholder: 'Ergebnis wird hier angezeigt...', notFound: '🔍 Werkzeug nicht gefunden', backHome: 'Zurück zur Startseite',
+    similarTools: '🔗 Das könnte Ihnen auch gefallen', loading: 'Verarbeitung...',
+    countChars: 'Zeichen (mit Leerzeichen):', countCharsNoSpace: 'Zeichen (ohne Leerzeichen):',
+    countWords: 'Wörter:', countLines: 'Zeilen:',
+    exportTXT: '📄 TXT', exportCSV: '📊 CSV', exportPDF: '📑 PDF'
   },
   fr: {
-    back: '🏠 Retour à l\'accueil',
-    paste: '📋 Coller',
-    example: '📄 Exemple',
-    clear: '🗑️ Effacer',
-    exampleHint: '📋 Exemple: Cliquez ici',
-    copy: '📋 Copier le résultat',
-    copied: '✅ Copié!',
-    inputLabel: '📝 Texte source',
-    outputLabel: '✨ Résultat',
-    placeholder: 'Entrez votre texte...',
-    resultPlaceholder: 'Le résultat apparaîtra ici...',
-    notFound: '🔍 Outil non trouvé',
-    backHome: 'Retour à l\'accueil',
-    similarTools: '🔗 Cela pourrait aussi vous intéresser',
-    loading: 'Traitement...',
-    countChars: 'Caractères (avec espaces):',
-    countCharsNoSpace: 'Caractères (sans espaces):',
-    countWords: 'Mots:',
-    countLines: 'Lignes:',
-    exportTXT: '📄 TXT',
-    exportCSV: '📊 CSV',
-    exportPDF: '📑 PDF'
+    back: '🏠 Retour à l\'accueil', paste: '📋 Coller', example: '📄 Exemple', clear: '🗑️ Effacer',
+    exampleHint: '📋 Exemple: Cliquez ici', copy: '📋 Copier le résultat', copied: '✅ Copié!',
+    inputLabel: '📝 Texte source', outputLabel: '✨ Résultat', placeholder: 'Entrez votre texte...',
+    resultPlaceholder: 'Le résultat apparaîtra ici...', notFound: '🔍 Outil non trouvé', backHome: 'Retour à l\'accueil',
+    similarTools: '🔗 Cela pourrait aussi vous intéresser', loading: 'Traitement...',
+    countChars: 'Caractères (avec espaces):', countCharsNoSpace: 'Caractères (sans espaces):',
+    countWords: 'Mots:', countLines: 'Lignes:',
+    exportTXT: '📄 TXT', exportCSV: '📊 CSV', exportPDF: '📑 PDF'
   },
   es: {
-    back: '🏠 Volver al inicio',
-    paste: '📋 Pegar',
-    example: '📄 Ejemplo',
-    clear: '🗑️ Borrar',
-    exampleHint: '📋 Ejemplo: Haga clic aquí',
-    copy: '📋 Copiar resultado',
-    copied: '✅ ¡Copiado!',
-    inputLabel: '📝 Texto fuente',
-    outputLabel: '✨ Resultado',
-    placeholder: 'Ingrese su texto...',
-    resultPlaceholder: 'El resultado aparecerá aquí...',
-    notFound: '🔍 Herramienta no encontrada',
-    backHome: 'Volver al inicio',
-    similarTools: '🔗 También te puede interesar',
-    loading: 'Procesando...',
-    countChars: 'Caracteres (con espacios):',
-    countCharsNoSpace: 'Caracteres (sin espacios):',
-    countWords: 'Palabras:',
-    countLines: 'Líneas:',
-    exportTXT: '📄 TXT',
-    exportCSV: '📊 CSV',
-    exportPDF: '📑 PDF'
+    back: '🏠 Volver al inicio', paste: '📋 Pegar', example: '📄 Ejemplo', clear: '🗑️ Borrar',
+    exampleHint: '📋 Ejemplo: Haga clic aquí', copy: '📋 Copiar resultado', copied: '✅ ¡Copiado!',
+    inputLabel: '📝 Texto fuente', outputLabel: '✨ Resultado', placeholder: 'Ingrese su texto...',
+    resultPlaceholder: 'El resultado aparecerá aquí...', notFound: '🔍 Herramienta no encontrada', backHome: 'Volver al inicio',
+    similarTools: '🔗 También te puede interesar', loading: 'Procesando...',
+    countChars: 'Caracteres (con espacios):', countCharsNoSpace: 'Caracteres (sin espacios):',
+    countWords: 'Palabras:', countLines: 'Líneas:',
+    exportTXT: '📄 TXT', exportCSV: '📊 CSV', exportPDF: '📑 PDF'
   }
 };
 
-// ========== محتوى SEO متعدد اللغات (يتم توليده لكل أداة) ==========
-// سنستخدم دالة تقوم ببناء المحتوى بناءً على اسم الأداة ونوعها
+// ========== محتوى SEO متعدد اللغات (بدون أخطاء نحوية) ==========
 function getLocalizedContent(toolId: string, toolName: string, locale: string) {
-  const isArabic = locale === 'ar';
-  
-  // قواميس الترجمة للأقسام الثابتة (Why use, How to use)
+  // قواميس الترجمة للأقسام الثابتة
   const whyUseTexts = {
     ar: [
       '⚡ نتائج فورية – اكتب وسترى النتيجة مباشرة',
@@ -207,8 +134,8 @@ function getLocalizedContent(toolId: string, toolName: string, locale: string) {
     ]
   };
   
-  // نص وصفي ديناميكي يعتمد على اسم الأداة
-  const descriptionMap: Record<string, Record<string, string>> = {
+  // نص وصفي ديناميكي باللغات الخمس
+  const descriptionMap: Record<string, string> = {
     ar: `أداة **${toolName}** من ToolKit ProAI تسمح لك بمعالجة النصوص بسهولة وسرعة. مثالية للكتّاب والمطورين وصناع المحتوى. استخدمها أونلاين مجاناً – بدون تثبيت.`,
     en: `The **${toolName}** tool from ToolKit ProAI lets you process text easily and quickly. Perfect for writers, developers, and content creators. Use it online for free — no installation required.`,
     de: `Das **${toolName}** Tool von ToolKit ProAI ermöglicht es Ihnen, Texte einfach und schnell zu verarbeiten. Ideal für Autoren, Entwickler und Content-Ersteller. Nutzen Sie es online kostenlos – keine Installation erforderlich.`,
@@ -216,48 +143,44 @@ function getLocalizedContent(toolId: string, toolName: string, locale: string) {
     es: `La herramienta **${toolName}** de ToolKit ProAI le permite procesar texto de forma fácil y rápida. Perfecto para escritores, desarrolladores y creadores de contenido. Úselo en línea gratis – sin necesidad de instalación.`
   };
   
-  // أسئلة شائعة ديناميكية
-  const faqMap: Record<string, Record<string, { q: string; a: string }[]>> = {
+  // الأسئلة الشائعة (تم إصلاح الأخطاء في الفرنسية باستخدام علامات الاقتباس المزدوجة)
+  const faqMap: Record<string, any[]> = {
     ar: [
-      { q: `ما هي أداة ${toolName}؟`, a: `أداة ${toolName} هي خدمة مجانية تتيح لك ${toolDescriptionFallback(toolId)} بسرعة وأمان.` },
+      { q: `ما هي أداة ${toolName}؟`, a: `أداة ${toolName} هي خدمة مجانية تتيح لك معالجة النصوص بسرعة وأمان.` },
       { q: `هل أداة ${toolName} مجانية؟`, a: 'نعم، جميع أدوات ToolKit ProAI مجانية تماماً ولا تحتاج إلى تسجيل.' },
       { q: `هل بياناتي آمنة عند استخدام ${toolName}؟`, a: 'نعم، جميع المعالجات تتم في متصفحك، ولا يتم تخزين أي من بياناتك على خوادمنا.' },
       { q: `كم عدد اللغات التي تدعمها الأداة؟`, a: 'تدعم الأداة 5 لغات: العربية، الإنجليزية، الألمانية، الفرنسية، الإسبانية.' }
     ],
     en: [
-      { q: `What is the ${toolName} tool?`, a: `The ${toolName} tool is a free online service that lets you ${toolDescriptionFallback(toolId)} quickly and securely.` },
+      { q: `What is the ${toolName} tool?`, a: `The ${toolName} tool is a free online service that lets you process text quickly and securely.` },
       { q: `Is the ${toolName} tool free?`, a: 'Yes, all ToolKit ProAI tools are completely free and require no registration.' },
       { q: `Is my data safe when using ${toolName}?`, a: 'Yes, all processing happens in your browser, and we do not store any of your data on our servers.' },
       { q: `How many languages does the tool support?`, a: 'The tool supports 5 languages: Arabic, English, German, French, Spanish.' }
     ],
     de: [
-      { q: `Was ist das ${toolName}-Tool?`, a: `Das ${toolName}-Tool ist ein kostenloser Online-Dienst, mit dem Sie ${toolDescriptionFallback(toolId)} schnell und sicher erledigen können.` },
+      { q: `Was ist das ${toolName}-Tool?`, a: `Das ${toolName}-Tool ist ein kostenloser Online-Dienst, mit dem Sie Texte schnell und sicher verarbeiten können.` },
       { q: `Ist das ${toolName}-Tool kostenlos?`, a: 'Ja, alle ToolKit ProAI-Tools sind völlig kostenlos und erfordern keine Registrierung.' },
       { q: `Sind meine Daten bei der Verwendung von ${toolName} sicher?`, a: 'Ja, die gesamte Verarbeitung findet in Ihrem Browser statt, und wir speichern keine Ihrer Daten auf unseren Servern.' },
       { q: `Wie viele Sprachen unterstützt das Tool?`, a: 'Das Tool unterstützt 5 Sprachen: Arabisch, Englisch, Deutsch, Französisch, Spanisch.' }
     ],
     fr: [
-      { q: `Qu'est-ce que l'outil ${toolName} ?`, a: `L'outil ${toolName} est un service en ligne gratuit qui vous permet de ${toolDescriptionFallback(toolId)} rapidement et en toute sécurité.` },
-      { q: `L'outil ${toolName} est-il gratuit ?`, a: 'Oui, tous les outils ToolKit ProAI sont entièrement gratuits et ne nécessitent aucune inscription.' },
-      { q: `Mes données sont-elles en sécurité lorsque j'utilise ${toolName} ?`, a: 'Oui, tout le traitement se fait dans votre navigateur et nous ne stockons aucune de vos données sur nos serveurs.' },
-      { q: `Combien de langues l'outil prend-il en charge ?`, a: 'L'outil prend en charge 5 langues : arabe, anglais, allemand, français, espagnol.' }
+      { q: "Qu'est-ce que l'outil " + toolName + " ?", a: "L'outil " + toolName + " est un service en ligne gratuit qui vous permet de traiter du texte rapidement et en toute sécurité." },
+      { q: "L'outil " + toolName + " est-il gratuit ?", a: "Oui, tous les outils ToolKit ProAI sont entièrement gratuits et ne nécessitent aucune inscription." },
+      { q: "Mes données sont-elles en sécurité lorsque j'utilise " + toolName + " ?", a: "Oui, tout le traitement se fait dans votre navigateur et nous ne stockons aucune de vos données sur nos serveurs." },
+      { q: "Combien de langues l'outil prend-il en charge ?", a: "L'outil prend en charge 5 langues : arabe, anglais, allemand, français, espagnol." }
     ],
     es: [
-      { q: `¿Qué es la herramienta ${toolName}?`, a: `La herramienta ${toolName} es un servicio gratuito en línea que le permite ${toolDescriptionFallback(toolId)} de forma rápida y segura.` },
+      { q: `¿Qué es la herramienta ${toolName}?`, a: `La herramienta ${toolName} es un servicio gratuito en línea que le permite procesar texto de forma rápida y segura.` },
       { q: `¿Es gratuita la herramienta ${toolName}?`, a: 'Sí, todas las herramientas de ToolKit ProAI son completamente gratuitas y no requieren registro.' },
       { q: `¿Mis datos están seguros al usar ${toolName}?`, a: 'Sí, todo el procesamiento ocurre en su navegador y no almacenamos ninguno de sus datos en nuestros servidores.' },
       { q: `¿Cuántos idiomas admite la herramienta?`, a: 'La herramienta admite 5 idiomas: árabe, inglés, alemán, francés, español.' }
     ]
   };
   
-  // دالة مساعدة لوصف الأداة تلقائياً (إذا لم تجد وصفاً مخصصاً)
+  // دالة مساعدة لوصف الأداة تلقائياً (اختيارية)
   function toolDescriptionFallback(toolId: string): string {
-    switch (toolId) {
-      case 'json-formatter': return 'تنسيق كود JSON';
-      case 'slug-generator': return 'تحويل النص إلى رابط URL صديق للسيو';
-      case 'word-counter': return 'حساب عدد الكلمات والأحرف';
-      default: return 'معالجة النصوص';
-    }
+    // not used now, but kept for consistency
+    return 'process text';
   }
   
   return {
