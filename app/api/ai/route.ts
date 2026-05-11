@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
         ],
         model: 'openai',
         json: false
-        // لقد قمنا بإزالة السطر "seed: -1" الذي كان يسبب المشكلة
+        // ✅ تم إزالة السطر "seed: -1" الذي كان يسبب المشكلة
       })
     });
     
