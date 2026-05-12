@@ -1,5 +1,6 @@
 import { Cairo, Inter } from 'next/font/google';
 import './globals.css';
+import ClientProviders from '@/components/ClientProviders';
 
 const cairo = Cairo({
   subsets: ['arabic', 'latin'],
@@ -59,7 +60,7 @@ export const metadata = {
     creator: '@toolkitproai',
   },
   verification: {
-    google: 'your-google-verification-code', // استبدل بكود التحقق من Google Search Console
+    google: 'your-google-verification-code',
   },
   alternates: {
     languages: {
@@ -87,7 +88,9 @@ export default function RootLayout({
         <link rel="canonical" href="https://toolkitpro-ai.com" />
       </head>
       <body className={`${cairo.variable} ${inter.variable}`} suppressHydrationWarning>
-        {children}
+        <ClientProviders>
+          {children}
+        </ClientProviders>
       </body>
     </html>
   );
